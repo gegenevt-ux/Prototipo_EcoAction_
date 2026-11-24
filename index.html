@@ -2,556 +2,1957 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>EcoAction</title>
+<title>EcoActions - Porto Velho</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
-/* ═══════════════════════════════════════════════════════
+/* ============================================
    VARIÁVEIS & RESET
-══════════════════════════════════════════════════════════ */
-:root{
-  --green:#1D5C2E;--green2:#2E7D42;--green3:#4CAF50;--gbg:#E8F5E9;
-  --text:#111;--text2:#555;--text3:#999;
-  --bg:#fff;--bg2:#f5f5f5;--bg3:#e8e8e8;
-  --border:rgba(0,0,0,0.09);--shadow:0 2px 16px rgba(0,0,0,0.07);
-  --r:14px;--rs:8px;--sidebar:260px;
+============================================ */
+:root {
+  --green: #1D5C2E;
+  --green2: #2E7D42;
+  --green3: #4CAF50;
+  --gbg: #E8F5E9;
+  --text: #111;
+  --text2: #555;
+  --text3: #999;
+  --bg: #fff;
+  --bg2: #f5f5f5;
+  --bg3: #e8e8e8;
+  --border: rgba(0,0,0,0.09);
+  --shadow: 0 2px 16px rgba(0,0,0,0.07);
+  --r: 14px;
+  --rs: 8px;
+  --sidebar: 260px;
 }
-@media(prefers-color-scheme:dark){:root{
-  --text:#f0f0f0;--text2:#aaa;--text3:#666;
-  --bg:#161616;--bg2:#222;--bg3:#2c2c2c;--border:rgba(255,255,255,0.08);
-}}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-html{height:100%;height:-webkit-fill-available;}body{height:100%;min-height:-webkit-fill-available;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg2);overflow:hidden;}
 
-/* ═══════════════════════════════════════════════════════
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f0f0f0;
+    --text2: #aaa;
+    --text3: #666;
+    --bg: #161616;
+    --bg2: #222;
+    --bg3: #2c2c2c;
+    --border: rgba(255,255,255,0.08);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
+  height: -webkit-fill-available;
+}
+
+body {
+  height: 100%;
+  min-height: -webkit-fill-available;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg2);
+  overflow: hidden;
+}
+
+/* ============================================
    LAYOUT DESKTOP
-══════════════════════════════════════════════════════════ */
-#app{
-  display:flex;
-  height:100%;min-height:-webkit-fill-available;
-  max-width:1280px;
-  margin:0 auto;
-  background:var(--bg);
-  box-shadow:0 0 60px rgba(0,0,0,0.15);
+============================================ */
+#app {
+  display: flex;
+  height: 100%;
+  min-height: -webkit-fill-available;
+  max-width: 1280px;
+  margin: 0 auto;
+  background: var(--bg);
+  box-shadow: 0 0 60px rgba(0,0,0,0.15);
 }
 
-/* SIDEBAR (desktop) */
-.sidebar{
-  width:var(--sidebar);
-  background:var(--green);
-  display:flex;
-  flex-direction:column;
-  flex-shrink:0;
-  overflow-y:auto;
+/* SIDEBAR */
+.sidebar {
+  width: var(--sidebar);
+  background: var(--green);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
 }
-.sidebar-logo{
-  padding:28px 20px 20px;
-  border-bottom:1px solid rgba(255,255,255,.12);
+
+.sidebar-logo {
+  padding: 28px 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
 }
-.sidebar-logo h1{font-size:17px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.3;}
-.sidebar-logo p{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;}
-.nav-links{padding:12px 0;flex:1;}
-.nav-link{
-  display:flex;align-items:center;gap:12px;
-  padding:13px 20px;font-size:14px;font-weight:600;
-  color:rgba(255,255,255,.7);cursor:pointer;
-  transition:all .15s;border-left:3px solid transparent;
+
+.sidebar-logo h1 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.02em;
+  line-height: 1.3;
 }
-.nav-link i{font-size:20px;}
-.nav-link:hover{background:rgba(255,255,255,.08);color:#fff;}
-.nav-link.on{background:rgba(255,255,255,.12);color:#fff;border-left-color:#fff;}
-.sidebar-user{
-  padding:16px 20px;border-top:1px solid rgba(255,255,255,.12);
-  display:flex;align-items:center;gap:10px;cursor:pointer;
+
+.sidebar-logo p {
+  font-size: 12px;
+  color: rgba(255,255,255,.6);
+  margin-top: 3px;
 }
-.sidebar-user:hover{background:rgba(255,255,255,.08);}
-.s-ava{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;}
-.s-name{font-size:13px;font-weight:700;color:#fff;}
-.s-loc{font-size:11px;color:rgba(255,255,255,.6);}
+
+.nav-links {
+  padding: 12px 0;
+  flex: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+  cursor: pointer;
+  transition: all .15s;
+  border-left: 3px solid transparent;
+}
+
+.nav-link i {
+  font-size: 20px;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+
+.nav-link.on {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border-left-color: #fff;
+}
+
+.sidebar-user {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-info-sidebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.s-ava {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.s-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.s-loc {
+  font-size: 11px;
+  color: rgba(255,255,255,.6);
+}
+
+.btn-sair-sidebar {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-sair-sidebar:hover {
+  background: rgba(255,255,255,0.25);
+}
 
 /* MAIN CONTENT */
-.main{
-  flex:1;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-  min-width:0;
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
 }
 
 /* DESKTOP TOPBAR */
-.desk-topbar{
-  background:var(--bg);
-  border-bottom:1px solid var(--border);
-  padding:14px 24px;
-  display:flex;
-  align-items:center;
-  gap:16px;
-  flex-shrink:0;
+.desk-topbar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
 }
-.desk-topbar h2{font-size:20px;font-weight:800;color:var(--text);flex:1;}
-.desk-search{
-  display:flex;align-items:center;gap:8px;
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:22px;padding:8px 14px;
-  width:280px;
+
+.desk-topbar h2 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  flex: 1;
 }
-.desk-search input{background:transparent;border:none;outline:none;font-size:14px;color:var(--text);width:100%;}
-.desk-topbar-icons{display:flex;align-items:center;gap:8px;}
-.icon-btn{
-  width:38px;height:38px;border-radius:50%;background:var(--bg2);
-  border:1px solid var(--border);display:flex;align-items:center;
-  justify-content:center;cursor:pointer;font-size:18px;color:var(--text2);
-  transition:all .15s;position:relative;
+
+.desk-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 8px 14px;
+  width: 280px;
 }
-.icon-btn:hover{background:var(--gbg);color:var(--green);}
+
+.desk-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: var(--text);
+  width: 100%;
+}
+
+.desk-topbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text2);
+  transition: all .15s;
+  position: relative;
+}
+
+.icon-btn:hover {
+  background: var(--gbg);
+  color: var(--green);
+}
 
 /* SCROLL AREA */
-.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 24px;}
-.scroll::-webkit-scrollbar{width:4px;}
-.scroll::-webkit-scrollbar-thumb{background:var(--green3);border-radius:99px;}
-
-/* ═══════════════════════════════════════════════════════
-   MOBILE LAYOUT
-══════════════════════════════════════════════════════════ */
-@media(max-width:700px){
-  html,body{overflow:hidden;height:100%;min-height:-webkit-fill-available;}
-  #app{max-width:100%;box-shadow:none;flex-direction:column;}
-  .sidebar{display:none;}
-  .main{height:100%;min-height:-webkit-fill-available;display:flex;flex-direction:column;}
-  .desk-topbar{display:none;}
-  .mobile-topbar{display:flex !important;}
-  .mobile-bnav{display:flex !important;}
-  .scroll{padding:12px 14px;}
-  .grid-2,.grid-3{grid-template-columns:1fr !important;}
-  .desk-cats{padding:10px 14px !important;}
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 24px;
 }
 
-/* MOBILE TOPBAR (oculto no desktop) */
-.mobile-topbar{
-  display:none;
-  background:var(--green);color:#fff;
-  padding:10px 16px 14px;flex-shrink:0;
+.scroll::-webkit-scrollbar {
+  width: 4px;
 }
-.mobile-topbar h1{font-size:18px;font-weight:800;}
-.mobile-topbar p{font-size:12px;opacity:.7;margin-top:2px;}
-.mob-trow{display:flex;justify-content:space-between;align-items:flex-start;}
-.mob-search{margin-top:10px;background:rgba(255,255,255,.18);border-radius:22px;padding:8px 14px;display:flex;align-items:center;gap:7px;}
-.mob-search input{background:transparent;border:none;outline:none;color:#fff;font-size:14px;width:100%;}
-.mob-search input::placeholder{color:rgba(255,255,255,.7);}
-.mob-search i{opacity:.8;}
 
-/* MOBILE BOTTOM NAV (oculto no desktop) */
-.mobile-bnav{
-  display:none;
-  border-top:1px solid var(--border);
-  background:var(--bg);flex-shrink:0;
-  padding-bottom:max(8px, env(safe-area-inset-bottom));
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--green3);
+  border-radius: 99px;
 }
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 8px;font-size:10px;color:var(--text3);cursor:pointer;transition:color .15s;font-weight:500;}
-.ni i{font-size:22px;}
-.ni.on{color:var(--green);}
 
-/* ═══════════════════════════════════════════════════════
+/* ============================================
+   MOBILE
+============================================ */
+@media (max-width: 700px) {
+  html, body {
+    overflow: hidden;
+    height: 100%;
+    min-height: -webkit-fill-available;
+  }
+  
+  #app {
+    max-width: 100%;
+    box-shadow: none;
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    display: none;
+  }
+  
+  .main {
+    height: 100%;
+    min-height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .desk-topbar {
+    display: none;
+  }
+  
+  .mobile-topbar {
+    display: flex !important;
+  }
+  
+  .mobile-bnav {
+    display: flex !important;
+  }
+  
+  .scroll {
+    padding: 12px 14px;
+  }
+  
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .desk-cats {
+    padding: 10px 14px !important;
+  }
+}
+
+.mobile-topbar {
+  display: none;
+  background: var(--green);
+  color: #fff;
+  padding: 10px 16px 14px;
+  flex-shrink: 0;
+}
+
+.mobile-topbar h1 {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.mobile-topbar p {
+  font-size: 12px;
+  opacity: .7;
+  margin-top: 2px;
+}
+
+.mob-trow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.mob-search {
+  margin-top: 10px;
+  background: rgba(255,255,255,.18);
+  border-radius: 22px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mob-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+}
+
+.mob-search input::placeholder {
+  color: rgba(255,255,255,.7);
+}
+
+.mob-search i {
+  opacity: .8;
+}
+
+.mobile-bnav {
+  display: none;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+
+.ni {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 0 8px;
+  font-size: 10px;
+  color: var(--text3);
+  cursor: pointer;
+  transition: color .15s;
+  font-weight: 500;
+}
+
+.ni i {
+  font-size: 22px;
+}
+
+.ni.on {
+  color: var(--green);
+}
+
+/* ============================================
    CATEGORIAS
-══════════════════════════════════════════════════════════ */
-.desk-cats{
-  display:flex;gap:8px;padding:14px 24px;
-  overflow-x:auto;flex-shrink:0;
-  background:var(--bg);border-bottom:1px solid var(--border);
+============================================ */
+.desk-cats {
+  display: flex;
+  gap: 8px;
+  padding: 14px 24px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
 }
-.desk-cats::-webkit-scrollbar{display:none;}
-.pill{white-space:nowrap;font-size:13px;padding:7px 16px;border-radius:22px;border:1px solid var(--border);background:var(--bg);color:var(--text2);cursor:pointer;transition:all .15s;flex-shrink:0;font-weight:500;}
-.pill.on{background:var(--green);color:#fff;border-color:var(--green);}
 
-/* ═══════════════════════════════════════════════════════
-   GRID DE CARDS
-══════════════════════════════════════════════════════════ */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-@media(max-width:1000px) and (min-width:701px){.grid-3{grid-template-columns:repeat(2,1fr);}}
+.desk-cats::-webkit-scrollbar {
+  display: none;
+}
 
-.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:var(--shadow);}
-.card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,0.12);}
-.card:active{transform:scale(.98);}
-.card-banner{height:100px;display:flex;align-items:center;justify-content:center;font-size:44px;}
-.card-body{padding:12px 14px;}
-.ctag{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;margin-bottom:7px;}
-.card-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;line-height:1.3;}
-.card-meta{font-size:12px;color:var(--text2);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
-.card-meta span{display:flex;align-items:center;gap:3px;}
-.vbar-wrap{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);}
-.vbar{flex:1;height:5px;background:var(--bg3);border-radius:99px;overflow:hidden;}
-.vfill{height:100%;background:var(--green3);border-radius:99px;}
-.vavail{color:var(--green);font-weight:700;}
-.lbl{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin:16px 0 10px;}
+.pill {
+  white-space: nowrap;
+  font-size: 13px;
+  padding: 7px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text2);
+  cursor: pointer;
+  transition: all .15s;
+  flex-shrink: 0;
+  font-weight: 500;
+}
 
-/* ═══════════════════════════════════════════════════════
-   BUTTONS
-══════════════════════════════════════════════════════════ */
-.btn{width:100%;padding:13px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:7px;}
-.btn:hover{opacity:.88;}
-.btn:active{opacity:.75;}
-.btn-green{background:var(--green);color:#fff;margin-top:8px;}
-.btn-out{background:transparent;color:var(--green);border:1.5px solid var(--green);margin-top:10px;}
-.btn-red{background:transparent;color:#c62828;border:1.5px solid #c62828;margin-top:8px;}
-.btn-gray{background:var(--bg2);color:var(--text);border:1px solid var(--border);margin-top:8px;}
-.btn-sm{padding:10px 14px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:5px;transition:opacity .15s;}
-.btn-sm:hover{opacity:.85;}
-.btn-row{display:flex;gap:8px;margin-top:10px;}
+.pill.on {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
 
-/* ═══════════════════════════════════════════════════════
+/* ============================================
+   GRID CARDS
+============================================ */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1000px) and (min-width: 701px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: var(--shadow);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+.card:active {
+  transform: scale(.98);
+}
+
+.card-banner {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+}
+
+.card-body {
+  padding: 12px 14px;
+}
+
+.ctag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-bottom: 7px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+
+.card-meta {
+  font-size: 12px;
+  color: var(--text2);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.card-meta span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.vbar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.vbar {
+  flex: 1;
+  height: 5px;
+  background: var(--bg3);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.vfill {
+  height: 100%;
+  background: var(--green3);
+  border-radius: 99px;
+}
+
+.vavail {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.lbl {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 16px 0 10px;
+}
+
+/* ============================================
+   BOTOES
+============================================ */
+.btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.btn:hover {
+  opacity: .88;
+}
+
+.btn:active {
+  opacity: .75;
+}
+
+.btn-green {
+  background: var(--green);
+  color: #fff;
+  margin-top: 8px;
+}
+
+.btn-out {
+  background: transparent;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+  margin-top: 10px;
+}
+
+.btn-red {
+  background: transparent;
+  color: #c62828;
+  border: 1.5px solid #c62828;
+  margin-top: 8px;
+}
+
+.btn-gray {
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  margin-top: 8px;
+}
+
+.btn-sm {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: opacity .15s;
+}
+
+.btn-sm:hover {
+  opacity: .85;
+}
+
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* ============================================
    SCREENS
-══════════════════════════════════════════════════════════ */
-.screen{display:none;flex-direction:column;flex:1;overflow:hidden;min-height:0;}
-.screen.active{display:flex;}
-.back-btn{display:flex;align-items:center;gap:5px;font-size:14px;color:#fff;background:none;border:none;cursor:pointer;padding:4px 0;opacity:.9;font-weight:600;}
+============================================ */
+.screen {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
 
-/* ═══════════════════════════════════════════════════════
+.screen.active {
+  display: flex;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  opacity: .9;
+  font-weight: 600;
+}
+
+/* ============================================
    DETAIL
-══════════════════════════════════════════════════════════ */
-.det-layout{display:flex;flex:1;overflow:hidden;gap:0;}
-.det-left{flex:1;overflow-y:auto;padding:24px;}
-.det-right{width:340px;flex-shrink:0;border-left:1px solid var(--border);overflow-y:auto;padding:24px;background:var(--bg);}
-@media(max-width:700px){
-  .det-layout{flex-direction:column;}
-  .det-right{width:100%;border-left:none;border-top:1px solid var(--border);padding:14px;}
+============================================ */
+.det-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 0;
 }
-.det-banner-big{height:200px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:72px;margin-bottom:20px;}
-@media(max-width:700px){.det-banner-big{height:130px;font-size:52px;border-radius:0;margin-bottom:0;}}
-.det-title{font-size:24px;font-weight:800;color:var(--text);margin-bottom:10px;line-height:1.2;}
-@media(max-width:700px){.det-title{font-size:19px;margin-top:14px;}}
-.org-row{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--text2);margin-bottom:16px;}
-.ava{width:34px;height:34px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--green);flex-shrink:0;}
-.irow{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--text2);margin-bottom:10px;}
-.irow i{font-size:18px;color:var(--green);width:20px;}
-.desc{font-size:14px;color:var(--text2);line-height:1.65;margin:16px 0;}
-.det-sidebar-box{background:var(--bg2);border-radius:var(--r);padding:18px;margin-bottom:16px;}
-.det-sidebar-box h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:12px;}
 
-/* ═══════════════════════════════════════════════════════
+.det-left {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.det-right {
+  width: 340px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 24px;
+  background: var(--bg);
+}
+
+@media (max-width: 700px) {
+  .det-layout {
+    flex-direction: column;
+  }
+  
+  .det-right {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding: 14px;
+  }
+}
+
+.det-banner-big {
+  height: 200px;
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 72px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+  .det-banner-big {
+    height: 130px;
+    font-size: 52px;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+}
+
+.det-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+@media (max-width: 700px) {
+  .det-title {
+    font-size: 19px;
+    margin-top: 14px;
+  }
+}
+
+.org-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  color: var(--text2);
+  margin-bottom: 16px;
+}
+
+.ava {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gbg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.irow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  color: var(--text2);
+  margin-bottom: 10px;
+}
+
+.irow i {
+  font-size: 18px;
+  color: var(--green);
+  width: 20px;
+}
+
+.desc {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.65;
+  margin: 16px 0;
+}
+
+.det-sidebar-box {
+  background: var(--bg2);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.det-sidebar-box h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+/* ============================================
    CHAT
-══════════════════════════════════════════════════════════ */
-.chat-layout{display:flex;flex:1;overflow:hidden;}
-.chat-sidebar{width:280px;flex-shrink:0;border-right:1px solid var(--border);display:flex;flex-direction:column;background:var(--bg);}
-.chat-sidebar-hdr{padding:16px;border-bottom:1px solid var(--border);font-size:14px;font-weight:700;color:var(--text);}
-.chat-acao-item{padding:12px 16px;cursor:pointer;border-bottom:1px solid var(--border);transition:background .15s;}
-.chat-acao-item:hover{background:var(--bg2);}
-.chat-acao-item.on{background:var(--gbg);}
-.chat-acao-nome{font-size:13px;font-weight:700;color:var(--text);}
-.chat-acao-last{font-size:12px;color:var(--text3);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.chat-main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
-/* Mobile: lista de chats é uma tela separada */
-.mob-chat-list{display:none;flex-direction:column;flex:1;overflow:hidden;}
-@media(max-width:700px){
-  .chat-sidebar{display:none;}
-  .chat-main{flex:1;}
-  .mob-chat-list{display:flex;}
+============================================ */
+.chat-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
 }
-@media(min-width:701px){.mob-chat-list{display:none !important;}}
-.chat-acao-item-big{
-  display:flex;align-items:center;gap:14px;
-  padding:16px;cursor:pointer;
-  border-bottom:1px solid var(--border);
-  background:var(--bg);transition:background .15s;
+
+.chat-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
 }
-.chat-acao-item-big:hover,.chat-acao-item-big:active{background:var(--bg2);}
-.chat-acao-item-big.on{background:var(--gbg);}
-.chat-acao-emoji{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
-.chat-acao-info{flex:1;min-width:0;}
-.chat-acao-nome{font-size:15px;font-weight:700;color:var(--text);}
-.chat-acao-last{font-size:13px;color:var(--text3);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.chat-acao-time{font-size:11px;color:var(--text3);flex-shrink:0;}
-.chat-hdr{background:var(--green);color:#fff;padding:12px 18px;flex-shrink:0;}
-.chat-priv{padding:7px 14px;font-size:12px;color:var(--text2);text-align:center;border-bottom:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:5px;}
-.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
-.msgs::-webkit-scrollbar{width:4px;}
-.msgs::-webkit-scrollbar-thumb{background:var(--green3);border-radius:99px;}
-.msg{max-width:68%;}
-.msg.me{align-self:flex-end;}
-.bubble{padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.45;}
-.msg.other .bubble{background:var(--bg2);color:var(--text);border-bottom-left-radius:4px;}
-.msg.me .bubble{background:var(--green);color:#fff;border-bottom-right-radius:4px;}
-.mname{font-size:11px;color:var(--text3);margin-bottom:4px;}
-.mtime{font-size:10px;color:var(--text3);margin-top:3px;text-align:right;}
-.chat-input-row{display:flex;gap:9px;padding:12px 16px 16px;border-top:1px solid var(--border);background:var(--bg);flex-shrink:0;}
-.cinput{flex:1;padding:11px 16px;border-radius:22px;border:1px solid var(--border);font-size:14px;background:var(--bg2);color:var(--text);outline:none;transition:border-color .15s;font-family:inherit;}
-.cinput:focus{border-color:var(--green);}
-.send{width:42px;height:42px;border-radius:50%;background:var(--green);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;flex-shrink:0;transition:opacity .15s;}
-.send:hover{opacity:.85;}
 
-/* ═══════════════════════════════════════════════════════
-   PAINEL
-══════════════════════════════════════════════════════════ */
-.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0;}
-.tab{padding:13px 20px;font-size:14px;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-weight:500;white-space:nowrap;}
-.tab.on{color:var(--green);border-bottom-color:var(--green);font-weight:700;}
-.acao-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:18px;margin-bottom:16px;box-shadow:var(--shadow);}
-.vcount{display:flex;align-items:center;gap:14px;background:var(--gbg);border-radius:var(--rs);padding:14px;margin:14px 0;}
-.vnum{font-size:34px;font-weight:800;color:var(--green);}
-.vlbl{font-size:13px;color:var(--green2);}
-.irow-p{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--border);}
-.irow-p:last-child{border-bottom:none;}
-.iava{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;}
+.chat-sidebar-hdr {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
 
-/* ═══════════════════════════════════════════════════════
+.chat-acao-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-acao-item:hover {
+  background: var(--bg2);
+}
+
+.chat-acao-item.on {
+  background: var(--gbg);
+}
+
+.chat-acao-emoji {
+  font-size: 24px;
+}
+
+.chat-acao-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-acao-nome {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.chat-acao-last {
+  font-size: 11px;
+  color: var(--text3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mob-chat-list {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.chat-hdr {
+  background: var(--green);
+  color: #fff;
+  padding: 12px 18px;
+  flex-shrink: 0;
+}
+
+.chat-priv {
+  padding: 7px 14px;
+  font-size: 12px;
+  color: var(--text2);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.msg {
+  max-width: 70%;
+}
+
+.msg.me {
+  align-self: flex-end;
+}
+
+.bubble {
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 13px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.msg.other .bubble {
+  background: var(--bg2);
+  color: var(--text);
+  border-bottom-left-radius: 4px;
+}
+
+.msg.me .bubble {
+  background: var(--green);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.mname {
+  font-size: 10px;
+  color: var(--text3);
+  margin-bottom: 4px;
+  margin-left: 4px;
+}
+
+.mtime {
+  font-size: 9px;
+  color: var(--text3);
+  margin-top: 3px;
+  text-align: right;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 9px;
+  padding: 12px 16px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.cinput {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+  background: var(--bg2);
+  color: var(--text);
+  outline: none;
+}
+
+.cinput:focus {
+  border-color: var(--green);
+}
+
+.send {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--green);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   TABS PAINEL
+============================================ */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.tab {
+  padding: 13px 20px;
+  font-size: 14px;
+  color: var(--text2);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .15s;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tab.on {
+  color: var(--green);
+  border-bottom-color: var(--green);
+  font-weight: 700;
+}
+
+.acao-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.vcount {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--gbg);
+  border-radius: var(--rs);
+  padding: 14px;
+  margin: 14px 0;
+}
+
+.vnum {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.vlbl {
+  font-size: 13px;
+  color: var(--green2);
+}
+
+.irow-p {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.irow-p:last-child {
+  border-bottom: none;
+}
+
+.iava {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ============================================
    PERFIL
-══════════════════════════════════════════════════════════ */
-.perfil-layout{display:flex;flex:1;overflow:hidden;gap:0;}
-.perfil-left{width:300px;flex-shrink:0;border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:28px 24px;text-align:center;overflow-y:auto;background:var(--bg);}
-.perfil-right{flex:1;overflow-y:auto;padding:24px;}
-@media(max-width:700px){
-  .perfil-layout{flex-direction:column;}
-  .perfil-left{width:100%;border-right:none;border-bottom:1px solid var(--border);padding:20px 16px 16px;flex-direction:row;text-align:left;align-items:flex-start;gap:16px;}
-  .perfil-right{padding:14px;}
+============================================ */
+.perfil-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 0;
 }
-.pf-ava-big{width:80px;height:80px;border-radius:50%;background:var(--gbg);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:var(--green);flex-shrink:0;cursor:pointer;border:3px solid var(--green);position:relative;overflow:hidden;}
-.pf-ava-big:hover .pf-ava-overlay{opacity:1;}
-.pf-ava-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:20px;opacity:0;transition:opacity .2s;}
-@media(max-width:700px){.pf-ava-big{width:60px;height:60px;font-size:22px;}}
-.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0;}
-.stat-card{background:var(--bg2);border-radius:var(--rs);padding:14px 8px;text-align:center;}
-.snum{font-size:28px;font-weight:800;color:var(--green);}
-.slbl{font-size:11px;color:var(--text2);margin-top:3px;line-height:1.3;}
-.selos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0;}
-.selo{background:var(--bg2);border-radius:var(--rs);padding:14px 8px 10px;text-align:center;border:1px solid var(--border);transition:all .2s;}
-.selo:hover{border-color:var(--green3);}
-.selo.off{opacity:.3;}
-.sicon{font-size:28px;}
-.sname{font-size:11px;color:var(--text2);margin-top:5px;line-height:1.3;}
-.prog-box{background:var(--bg2);border-radius:var(--rs);padding:14px;margin:14px 0;}
-.prog-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;}
-.hist-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
-.hist-item:last-child{border-bottom:none;}
-.hicon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.htitle{font-size:14px;font-weight:600;color:var(--text);}
-.hdate{font-size:12px;color:var(--text2);margin-top:2px;}
-.htag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:9px;}
 
-/* ═══════════════════════════════════════════════════════
-   FORM
-══════════════════════════════════════════════════════════ */
-.form-layout{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;}
-@media(max-width:700px){.form-layout{grid-template-columns:1fr;}}
-.form-full{grid-column:1/-1;}
-.fg{margin-bottom:16px;}
-.fl{font-size:13px;font-weight:700;color:var(--text2);margin-bottom:6px;display:block;}
-.fi{width:100%;padding:12px 14px;border-radius:var(--rs);border:1px solid var(--border);font-size:14px;background:var(--bg2);color:var(--text);outline:none;transition:border-color .15s;font-family:inherit;}
-.fi:focus{border-color:var(--green);}
-.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px;}
-@media(max-width:700px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
-.cat-opt{padding:10px 8px;border-radius:var(--rs);border:1px solid var(--border);text-align:center;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;color:var(--text2);background:var(--bg2);}
-.cat-opt:hover{border-color:var(--green);color:var(--green);}
-.cat-opt.on{background:var(--green);color:#fff;border-color:var(--green);}
+.perfil-left {
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 24px;
+  text-align: center;
+  overflow-y: auto;
+  background: var(--bg);
+}
 
-/* ═══════════════════════════════════════════════════════
-   MODAL
-══════════════════════════════════════════════════════════ */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;}
-.modal-bg.open{display:flex;}
-.modal{background:var(--bg);border-radius:20px;padding:24px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
-@media(max-width:700px){.modal{border-radius:20px 20px 0 0;margin-top:auto;max-height:88vh;margin-bottom:0;}}
-.modal-bg.open.mobile-sheet{align-items:flex-end;padding:0;}
-.modal-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:18px;display:flex;justify-content:space-between;align-items:center;}
-.modal-title button{background:none;border:none;font-size:24px;cursor:pointer;color:var(--text3);line-height:1;}
+.perfil-right {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
 
-/* CONFIRM */
-.confirm-center{display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 0 20px;}
-.big-icon{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:44px;margin-bottom:18px;}
-.info-card{background:var(--bg2);border-radius:var(--rs);padding:14px 16px;width:100%;text-align:left;margin-bottom:12px;}
-.info-card-lbl{font-size:12px;color:var(--text2);margin-bottom:4px;}
-.info-card-val{font-size:14px;font-weight:700;color:var(--text);}
-.warn-card{background:#FFFDE7;border:1px solid #F9A825;border-radius:var(--rs);padding:12px 14px;width:100%;text-align:left;margin-bottom:16px;}
+@media (max-width: 700px) {
+  .perfil-layout {
+    flex-direction: column;
+  }
+  
+  .perfil-left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 16px 16px;
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .perfil-right {
+    padding: 14px;
+  }
+}
 
-/* BADGE */
-.badge{position:absolute;top:-3px;right:-3px;background:#E53935;color:#fff;border-radius:50%;width:17px;height:17px;font-size:9px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.pf-ava-big {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gbg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--green);
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 3px solid var(--green);
+  position: relative;
+  overflow: hidden;
+}
 
-/* TOAST */
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(10px);background:#222;color:#fff;border-radius:22px;padding:11px 22px;font-size:14px;font-weight:600;opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap;z-index:999;max-width:90vw;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.pf-ava-big:hover .pf-ava-overlay {
+  opacity: 1;
+}
 
-/* EMPTY */
-.empty{text-align:center;padding:60px 20px;color:var(--text3);}
-.empty .ei{font-size:48px;margin-bottom:14px;}
-.empty .et{font-size:16px;font-weight:700;color:var(--text2);}
-.empty .es{font-size:14px;margin-top:6px;}
+.pf-ava-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  opacity: 0;
+  transition: opacity .2s;
+}
 
-/* SECTION HEADER */
-.sec-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.sec-hdr h3{font-size:16px;font-weight:800;color:var(--text);}
-.sec-hdr span{font-size:13px;color:var(--green);cursor:pointer;font-weight:600;}
+@media (max-width: 700px) {
+  .pf-ava-big {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+  }
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.stat-card {
+  background: var(--bg2);
+  border-radius: var(--rs);
+  padding: 14px 8px;
+  text-align: center;
+}
+
+.snum {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.slbl {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+.selos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.selo {
+  background: var(--bg2);
+  border-radius: var(--rs);
+  padding: 14px 8px 10px;
+  text-align: center;
+  border: 1px solid var(--border);
+  transition: all .2s;
+}
+
+.selo:hover {
+  border-color: var(--green3);
+}
+
+.selo.off {
+  opacity: .3;
+}
+
+.sicon {
+  font-size: 28px;
+}
+
+.sname {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 5px;
+  line-height: 1.3;
+}
+
+.prog-box {
+  background: var(--bg2);
+  border-radius: var(--rs);
+  padding: 14px;
+  margin: 14px 0;
+}
+
+.prog-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.hist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hist-item:last-child {
+  border-bottom: none;
+}
+
+.hicon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.htitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.hdate {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 2px;
+}
+
+.htag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 9px;
+}
+
+/* ============================================
+   FORM CRIAR
+============================================ */
+.form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+
+@media (max-width: 700px) {
+  .form-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-full {
+  grid-column: 1/-1;
+}
+
+.fg {
+  margin-bottom: 16px;
+}
+
+.fl {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text2);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.fi {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--rs);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  background: var(--bg2);
+  color: var(--text);
+  outline: none;
+  font-family: inherit;
+}
+
+.fi:focus {
+  border-color: var(--green);
+}
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+@media (max-width: 700px) {
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cat-opt {
+  padding: 10px 8px;
+  border-radius: var(--rs);
+  border: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .15s;
+  color: var(--text2);
+  background: var(--bg2);
+}
+
+.cat-opt:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.cat-opt.on {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+/* ============================================
+   MODAIS
+============================================ */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-bg.open {
+  display: flex;
+}
+
+.modal {
+  background: var(--bg);
+  border-radius: 20px;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 700px) {
+  .modal {
+    border-radius: 20px 20px 0 0;
+    margin-top: auto;
+    max-height: 88vh;
+    margin-bottom: 0;
+  }
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text3);
+  line-height: 1;
+}
+
+/* ============================================
+   CONFIRMACAO
+============================================ */
+.confirm-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+.big-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  margin-bottom: 18px;
+}
+
+.info-card {
+  background: var(--bg2);
+  border-radius: var(--rs);
+  padding: 14px 16px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.info-card-lbl {
+  font-size: 12px;
+  color: var(--text2);
+  margin-bottom: 4px;
+}
+
+.info-card-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.warn-card {
+  background: #FFFDE7;
+  border: 1px solid #F9A825;
+  border-radius: var(--rs);
+  padding: 12px 14px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+/* ============================================
+   BADGE, TOAST, EMPTY
+============================================ */
+.badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: #E53935;
+  color: #fff;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  font-size: 9px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #222;
+  color: #fff;
+  border-radius: 22px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all .25s;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 999;
+  max-width: 90vw;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text3);
+}
+
+.empty .ei {
+  font-size: 48px;
+  margin-bottom: 14px;
+}
+
+.empty .et {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text2);
+}
+
+.empty .es {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* ============================================
+   TELA DE LOGIN
+============================================ */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1D5C2E 0%, #2E7D42 50%, #4CAF50 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.login-card {
+  background: var(--bg);
+  border-radius: 32px;
+  padding: 40px 36px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card h1 {
+  font-size: 28px;
+  color: var(--green);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.login-card .sub {
+  color: var(--text2);
+  margin-bottom: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.login-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid var(--border);
+}
+
+.login-tab {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text2);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.login-tab.active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+.login-input-group {
+  margin-bottom: 20px;
+}
+
+.login-input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.login-input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  font-size: 15px;
+  background: var(--bg2);
+  color: var(--text);
+  outline: none;
+  transition: all 0.2s;
+}
+
+.login-input-group input:focus {
+  border-color: var(--green);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s;
+}
+
+.btn-login:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.login-error {
+  color: #c62828;
+  font-size: 13px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.btn-sair-perfil {
+  background: #c62828;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+
+.btn-sair-perfil:hover {
+  opacity: 0.9;
+}
 </style>
 </head>
 <body>
-<div id="app">
 
-<!-- ═══════════ SIDEBAR (desktop) ═══════════ -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-logo">
+<!-- TELA DE LOGIN/CADASTRO -->
+<div id="loginScreen" class="login-overlay">
+  <div class="login-card">
     <h1>🌳 Ações Socioambientais</h1>
-    <p>Porto Velho, RO</p>
-  </div>
-  <div class="nav-links">
-    <div class="nav-link on" data-screen="feed" onclick="goTo('feed')"><i class="ti ti-home"></i> Início</div>
-    <div class="nav-link" data-screen="criar" onclick="goTo('criar')"><i class="ti ti-plus"></i> Criar ação</div>
-    <div class="nav-link" data-screen="chat" onclick="goTo('chat')"><i class="ti ti-message-circle"></i> Chat</div>
-    <div class="nav-link" data-screen="painel" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i> Painel</div>
-    <div class="nav-link" data-screen="perfil" onclick="goTo('perfil')"><i class="ti ti-user"></i> Meu Perfil</div>
-  </div>
-  <div class="sidebar-user" onclick="goTo('perfil')">
-    <div class="s-ava" id="sb-ava">GN</div>
-    <div>
-      <div class="s-name" id="sb-nome">Guilherme Nogueira</div>
-      <div class="s-loc" id="sb-loc">Porto Velho, RO</div>
+    <div class="sub">Porto Velho - RO</div>
+    
+    <div class="login-tabs">
+      <button class="login-tab active" onclick="toggleLoginTab('login')">Entrar</button>
+      <button class="login-tab" onclick="toggleLoginTab('cadastro')">Criar conta</button>
     </div>
-    <i class="ti ti-chevron-right" style="color:rgba(255,255,255,.4);margin-left:auto"></i>
+    
+    <div id="loginForm">
+      <div class="login-input-group">
+        <label> Email</label>
+        <input type="email" id="loginEmail" placeholder="seu@email.com">
+      </div>
+      <div class="login-input-group">
+        <label> Senha</label>
+        <input type="password" id="loginPassword" placeholder="Digite sua senha">
+      </div>
+      <button class="btn-login" onclick="fazerLogin()">Entrar</button>
+    </div>
+    
+    <div id="cadastroForm" style="display:none;">
+      <div class="login-input-group">
+        <label> Nome completo</label>
+        <input type="text" id="cadastroNome" placeholder="Seu nome">
+      </div>
+      <div class="login-input-group">
+        <label> Email</label>
+        <input type="email" id="cadastroEmail" placeholder="seu@email.com">
+      </div>
+      <div class="login-input-group">
+        <label> Senha</label>
+        <input type="password" id="cadastroPassword" placeholder="Crie uma senha">
+      </div>
+      <div class="login-input-group">
+        <label> Confirmar senha</label>
+        <input type="password" id="cadastroConfirmPassword" placeholder="Confirme sua senha">
+      </div>
+      <button class="btn-login" onclick="fazerCadastro()">Criar conta</button>
+    </div>
+    
+    <div id="loginMessage" class="login-error"></div>
   </div>
 </div>
 
-<!-- ═══════════ MAIN ═══════════ -->
-<div class="main" id="main">
-
-  <!-- ════ FEED ════ -->
-  <div class="screen active" id="s-feed">
-    <!-- Mobile topbar -->
-    <div class="mobile-topbar">
-      <div class="mob-trow">
-        <div><h1>EcoAction</h1><p id="mob-loc"><i class="ti ti-map-pin"></i> Porto Velho, RO</p></div>
-        <div style="position:relative;cursor:pointer" onclick="openNotif()">
-          <i class="ti ti-bell" style="font-size:24px"></i>
-          <div class="badge" id="notif-badge">3</div>
+<!-- APP PRINCIPAL -->
+<div id="app" style="display:none;">
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <h1>🌳 EcoAction</h1>
+      <p>Porto Velho, RO</p>
+    </div>
+    <div class="nav-links">
+      <div class="nav-link on" data-screen="feed" onclick="goTo('feed')"><i class="ti ti-home"></i> Início</div>
+      <div class="nav-link" data-screen="criar" onclick="goTo('criar')"><i class="ti ti-plus"></i> Criar ação</div>
+      <div class="nav-link" data-screen="chat" onclick="goTo('chat')"><i class="ti ti-message-circle"></i> Chat</div>
+      <div class="nav-link" data-screen="painel" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i> Painel</div>
+      <div class="nav-link" data-screen="perfil" onclick="goTo('perfil')"><i class="ti ti-user"></i> Meu Perfil</div>
+    </div>
+    <div class="sidebar-user" onclick="goTo('perfil')">
+      <div class="user-info-sidebar">
+        <div class="s-ava" id="sb-ava">--</div>
+        <div>
+          <div class="s-name" id="sb-nome">Carregando...</div>
+          <div class="s-loc" id="sb-loc">Porto Velho, RO</div>
         </div>
       </div>
-      <div class="mob-search">
-        <i class="ti ti-search"></i>
-        <input id="mob-search" placeholder="Buscar ações..." oninput="renderFeed()">
-      </div>
-    </div>
-    <!-- Desktop topbar -->
-    <div class="desk-topbar">
-      <h2>Início</h2>
-      <div class="desk-search">
-        <i class="ti ti-search" style="color:var(--text3)"></i>
-        <input id="desk-search" placeholder="Buscar ações..." oninput="renderFeed()">
-      </div>
-      <div class="desk-topbar-icons">
-        <div class="icon-btn" style="position:relative" onclick="openNotif()">
-          <i class="ti ti-bell"></i>
-          <div class="badge" id="notif-badge2">3</div>
-        </div>
-      </div>
-    </div>
-    <div class="desk-cats" id="cats">
-      <div class="pill on" onclick="filterCat(this,'all')">Todos</div>
-      <div class="pill" onclick="filterCat(this,'animais')">🐾 Animais</div>
-      <div class="pill" onclick="filterCat(this,'meio')">🌳 Meio Ambiente</div>
-      <div class="pill" onclick="filterCat(this,'social')">🤝 Social</div>
-      <div class="pill" onclick="filterCat(this,'saude')">💉 Saúde</div>
-      <div class="pill" onclick="filterCat(this,'edu')">📚 Educação</div>
-    </div>
-    <div class="scroll" id="feed-list"></div>
-    <!-- Mobile bottomnav -->
-    <div class="mobile-bnav">
-      <div class="ni on" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
-      <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
-      <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
-      <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
-      <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+      <button class="btn-sair-sidebar" onclick="event.stopPropagation(); fazerLogout()">
+        <i class="ti ti-logout"></i> Sair
+      </button>
     </div>
   </div>
 
-  <!-- ════ DETALHE ════ -->
-  <div class="screen" id="s-detail">
-    <div class="mobile-topbar" style="padding-bottom:10px">
-      <button class="back-btn" onclick="goTo('feed')"><i class="ti ti-arrow-left"></i> Voltar</button>
-    </div>
-    <div class="desk-topbar">
-      <button style="display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--text2)" onclick="goTo('feed')"><i class="ti ti-arrow-left" style="font-size:18px"></i> Voltar para o feed</button>
-    </div>
-    <div class="det-layout">
-      <div class="det-left">
-        <div id="det-banner" class="det-banner-big" style="background:#E8F5E9">🗑️</div>
-        <div id="det-tag" class="ctag">Meio Ambiente</div>
-        <div class="det-title" id="det-title"></div>
-        <div class="org-row"><div class="ava" id="det-org-ava">CL</div><span id="det-org-nome"></span></div>
-        <div class="irow"><i class="ti ti-calendar"></i><span id="det-data"></span></div>
-        <div class="irow"><i class="ti ti-clock"></i><span id="det-hora"></span></div>
-        <div class="irow"><i class="ti ti-map-pin"></i><span id="det-local"></span></div>
-        <div class="desc" id="det-desc"></div>
-        <div class="lbl">O que levar</div>
-        <div style="font-size:14px;color:var(--text2)" id="det-levar"></div>
-      </div>
-      <div class="det-right">
-        <div class="det-sidebar-box">
-          <h3>Vagas disponíveis</h3>
-          <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text2);margin-bottom:6px">
-            <span id="det-vagas"></span><span style="color:var(--green);font-weight:700" id="det-livres"></span>
-          </div>
-          <div class="vbar" style="height:8px"><div class="vfill" id="det-bar"></div></div>
-        </div>
-        <button class="btn btn-green" id="btn-inscrever" onclick="inscrever()"><i class="ti ti-check"></i> Quero Participar</button>
-        <button class="btn btn-out" onclick="irChat()"><i class="ti ti-message-circle"></i> Ver chat da ação</button>
-        <div class="det-sidebar-box" style="margin-top:16px">
-          <h3>Organizado por</h3>
-          <div style="display:flex;align-items:center;gap:10px">
-            <div class="ava" style="width:40px;height:40px;font-size:14px" id="det-org-ava2">CL</div>
-            <div><div style="font-size:14px;font-weight:700;color:var(--text)" id="det-org2"></div><div style="font-size:12px;color:var(--text2)">Organizador verificado ✓</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="mobile-bnav">
-      <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
-      <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
-      <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
-      <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
-      <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
-    </div>
-  </div>
-
-  <!-- ════ INSCRITO ════ -->
-  <div class="screen" id="s-inscrito">
-    <div class="mobile-topbar" style="padding-bottom:10px">
-      <button class="back-btn" id="inscrito-back"><i class="ti ti-arrow-left"></i> Voltar</button>
-    </div>
-    <div class="desk-topbar">
-      <button style="display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--text2)" id="inscrito-back2"><i class="ti ti-arrow-left" style="font-size:18px"></i> Voltar</button>
-    </div>
-    <div class="scroll" style="display:flex;align-items:center;justify-content:center;">
-      <div style="max-width:480px;width:100%">
-        <div class="confirm-center">
-          <div class="big-icon" style="background:#E8F5E9">✅</div>
-          <div style="font-size:24px;font-weight:800;color:var(--text);margin-bottom:8px">Inscrição confirmada!</div>
-          <div style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:24px;max-width:320px" id="inscrito-sub"></div>
-          <div class="info-card"><div class="info-card-lbl">Ponto de encontro</div><div class="info-card-val" id="inscrito-local"></div></div>
-          <div class="warn-card"><div style="font-size:12px;font-weight:700;color:#795548;margin-bottom:3px">⚠️ Cancelamento</div><div style="font-size:12px;color:#795548">Para cancelar, faça-o com pelo menos 24h de antecedência.</div></div>
-          <button class="btn btn-green" id="inscrito-chat-btn" style="max-width:320px;width:100%"><i class="ti ti-message-circle"></i> Acessar chat da ação</button>
-          <button class="btn btn-out" onclick="goTo('feed')" style="max-width:320px;width:100%">Ver outras ações</button>
-        </div>
-      </div>
-    </div>
-    <div class="mobile-bnav">
-      <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
-      <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
-      <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
-      <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
-      <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
-    </div>
-  </div>
-
-  <!-- ════ CHAT ════ -->
-  <div class="screen" id="s-chat">
-    <div class="desk-topbar"><h2>Chat das Ações</h2></div>
-
-    <!-- MOBILE: lista de chats -->
-    <div class="mob-chat-list" id="mob-chat-list-screen">
+  <div class="main">
+    <!-- FEED SCREEN -->
+    <div class="screen active" id="s-feed">
       <div class="mobile-topbar">
         <div class="mob-trow">
-          <div><h1>Chats</h1><p>Suas conversas</p></div>
+          <div><h1>EcoAction</h1><p id="mob-loc"><i class="ti ti-map-pin"></i> Porto Velho, RO</p></div>
+          <div style="position:relative;cursor:pointer" onclick="openNotif()">
+            <i class="ti ti-bell" style="font-size:24px"></i>
+            <div class="badge" id="notif-badge">0</div>
+          </div>
+        </div>
+        <div class="mob-search">
+          <i class="ti ti-search"></i>
+          <input id="mob-search" placeholder="Buscar ações..." oninput="renderFeed()">
         </div>
       </div>
-      <div class="scroll" id="mob-chat-list" style="padding:0"></div>
+      <div class="desk-topbar">
+        <h2>Início</h2>
+        <div class="desk-search">
+          <i class="ti ti-search" style="color:var(--text3)"></i>
+          <input id="desk-search" placeholder="Buscar ações..." oninput="renderFeed()">
+        </div>
+        <div class="desk-topbar-icons">
+          <div class="icon-btn" style="position:relative" onclick="openNotif()">
+            <i class="ti ti-bell"></i>
+            <div class="badge" id="notif-badge2">0</div>
+          </div>
+        </div>
+      </div>
+      <div class="desk-cats" id="cats">
+        <div class="pill on" onclick="filterCat(this,'all')">Todos</div>
+        <div class="pill" onclick="filterCat(this,'animais')">🐾 Animais</div>
+        <div class="pill" onclick="filterCat(this,'meio')">🌳 Meio Ambiente</div>
+        <div class="pill" onclick="filterCat(this,'social')">🤝 Social</div>
+        <div class="pill" onclick="filterCat(this,'saude')">💉 Saúde</div>
+        <div class="pill" onclick="filterCat(this,'edu')">📚 Educação</div>
+      </div>
+      <div class="scroll" id="feed-list"></div>
       <div class="mobile-bnav">
+        <div class="ni on" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
+        <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
+        <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
+        <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
+        <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+      </div>
+    </div>
+
+    <!-- DETALHE SCREEN -->
+    <div class="screen" id="s-detail">
+      <div class="mobile-topbar" style="padding-bottom:10px">
+        <button class="back-btn" onclick="goTo('feed')"><i class="ti ti-arrow-left"></i> Voltar</button>
+      </div>
+      <div class="desk-topbar">
+        <button style="display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--text2)" onclick="goTo('feed')"><i class="ti ti-arrow-left" style="font-size:18px"></i> Voltar para o feed</button>
+      </div>
+      <div class="det-layout">
+        <div class="det-left">
+          <div id="det-banner" class="det-banner-big" style="background:#E8F5E9">🗑️</div>
+          <div id="det-tag" class="ctag">Meio Ambiente</div>
+          <div class="det-title" id="det-title"></div>
+          <div class="org-row"><div class="ava" id="det-org-ava">CL</div><span id="det-org-nome"></span></div>
+          <div class="irow"><i class="ti ti-calendar"></i><span id="det-data"></span></div>
+          <div class="irow"><i class="ti ti-clock"></i><span id="det-hora"></span></div>
+          <div class="irow"><i class="ti ti-map-pin"></i><span id="det-local"></span></div>
+          <div class="desc" id="det-desc"></div>
+          <div class="lbl">O que levar</div>
+          <div style="font-size:14px;color:var(--text2)" id="det-levar"></div>
+        </div>
+        <div class="det-right">
+          <div class="det-sidebar-box">
+            <h3>Vagas disponíveis</h3>
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text2);margin-bottom:6px">
+              <span id="det-vagas"></span><span style="color:var(--green);font-weight:700" id="det-livres"></span>
+            </div>
+            <div class="vbar" style="height:8px"><div class="vfill" id="det-bar"></div></div>
+          </div>
+          <button class="btn btn-green" id="btn-inscrever" onclick="inscrever()"><i class="ti ti-check"></i> Quero Participar</button>
+          <button class="btn btn-out" onclick="irChat()"><i class="ti ti-message-circle"></i> Ver chat da ação</button>
+          <div class="det-sidebar-box" style="margin-top:16px">
+            <h3>Organizado por</h3>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="ava" style="width:40px;height:40px;font-size:14px" id="det-org-ava2">CL</div>
+              <div><div style="font-size:14px;font-weight:700;color:var(--text)" id="det-org2"></div><div style="font-size:12px;color:var(--text2)">Organizador verificado ✓</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-bnav">
+        <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
+        <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
+        <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
+        <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
+        <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+      </div>
+    </div>
+
+    <!-- INSCRITO SCREEN -->
+    <div class="screen" id="s-inscrito">
+      <div class="mobile-topbar" style="padding-bottom:10px">
+        <button class="back-btn" id="inscrito-back"><i class="ti ti-arrow-left"></i> Voltar</button>
+      </div>
+      <div class="desk-topbar">
+        <button style="display:flex;align-items:center;gap:7px;background:none;border:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--text2)" id="inscrito-back2"><i class="ti ti-arrow-left" style="font-size:18px"></i> Voltar</button>
+      </div>
+      <div class="scroll" style="display:flex;align-items:center;justify-content:center;">
+        <div style="max-width:480px;width:100%">
+          <div class="confirm-center">
+            <div class="big-icon" style="background:#E8F5E9">✅</div>
+            <div style="font-size:24px;font-weight:800;color:var(--text);margin-bottom:8px">Inscrição confirmada!</div>
+            <div style="font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:24px;max-width:320px" id="inscrito-sub"></div>
+            <div class="info-card"><div class="info-card-lbl">Ponto de encontro</div><div class="info-card-val" id="inscrito-local"></div></div>
+            <div class="warn-card"><div style="font-size:12px;font-weight:700;color:#795548;margin-bottom:3px">⚠️ Cancelamento</div><div style="font-size:12px;color:#795548">Para cancelar, faça-o com pelo menos 24h de antecedência.</div></div>
+            <button class="btn btn-green" id="inscrito-chat-btn" style="max-width:320px;width:100%"><i class="ti ti-message-circle"></i> Acessar chat da ação</button>
+            <button class="btn btn-out" onclick="goTo('feed')" style="max-width:320px;width:100%">Ver outras ações</button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-bnav">
+        <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
+        <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
+        <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
+        <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
+        <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+      </div>
+    </div>
+
+    <!-- CHAT SCREEN -->
+    <div class="screen" id="s-chat">
+      <div class="desk-topbar"><h2>Chat das Ações</h2></div>
+      <div class="mob-chat-list" id="mobChatList" style="display:flex;flex-direction:column;height:100%;">
+        <div class="mobile-topbar">
+          <div class="mob-trow">
+            <div><h1>Chats</h1><p>Suas conversas</p></div>
+          </div>
+        </div>
+        <div class="scroll" id="mobChatContainer" style="padding:0;"></div>
+        <div class="mobile-bnav">
+          <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
+          <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
+          <div class="ni on"><i class="ti ti-message-circle"></i>Chat</div>
+          <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
+          <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+        </div>
+      </div>
+      <div class="chat-layout" id="chatConversa" style="display:none;">
+        <div class="chat-sidebar">
+          <div class="chat-sidebar-hdr">💬 Seus chats</div>
+          <div id="chatListSidebar"></div>
+        </div>
+        <div class="chat-main">
+          <div class="chat-hdr">
+            <div style="display:flex;align-items:center;gap:10px">
+              <button class="back-btn" id="chatVoltarBtn" onclick="voltarListaChats()"><i class="ti ti-arrow-left"></i></button>
+              <div style="flex:1">
+                <div style="font-size:16px;font-weight:800" id="chatTitulo"></div>
+                <div style="font-size:12px;opacity:.72" id="chatSubtitulo"></div>
+              </div>
+              <i class="ti ti-users" style="font-size:22px;opacity:.8"></i>
+            </div>
+          </div>
+          <div class="chat-priv"><i class="ti ti-lock"></i> Chat privado — apenas inscritos podem ver</div>
+          <div class="msgs" id="msgsContainer"></div>
+          <div class="chat-input-row">
+            <input class="cinput" id="msgInput" placeholder="Mensagem..." onkeypress="if(event.key==='Enter') enviarMensagem()">
+            <button class="send" onclick="enviarMensagem()"><i class="ti ti-send" style="font-size:18px"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-bnav" id="chatBottomNav" style="display:none;">
         <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
         <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
         <div class="ni on"><i class="ti ti-message-circle"></i>Chat</div>
@@ -560,736 +1961,1165 @@ html{height:100%;height:-webkit-fill-available;}body{height:100%;min-height:-web
       </div>
     </div>
 
-    <!-- DESKTOP + MOBILE conversa aberta -->
-    <div class="chat-layout" id="chat-conversa" style="display:none">
-      <!-- Sidebar desktop -->
-      <div class="chat-sidebar">
-        <div class="chat-sidebar-hdr">💬 Seus chats</div>
-        <div id="chat-list"></div>
+    <!-- PAINEL SCREEN -->
+    <div class="screen" id="s-painel">
+      <div class="desk-topbar"><h2>Painel do Organizador</h2></div>
+      <div class="mobile-topbar"><h1>Painel</h1><p>Gerencie suas ações</p></div>
+      <div class="tabs">
+        <div class="tab on" onclick="painelTab(this,'ativas')">Ativas</div>
+        <div class="tab" onclick="painelTab(this,'encerradas')">Encerradas</div>
+        <div class="tab" onclick="painelTab(this,'minhas')">Minhas inscrições</div>
       </div>
-      <!-- Conversa -->
-      <div class="chat-main">
-        <div class="chat-hdr" id="chat-hdr">
-          <div style="display:flex;align-items:center;gap:10px">
-            <button class="back-btn" id="chat-back-mob" onclick="voltarListaChats()"><i class="ti ti-arrow-left"></i></button>
-            <div style="flex:1">
-              <div style="font-size:16px;font-weight:800" id="chat-title"></div>
-              <div style="font-size:12px;opacity:.72" id="chat-sub"></div>
-            </div>
-            <i class="ti ti-users" style="font-size:22px;opacity:.8"></i>
+      <div class="scroll" id="painelContent"></div>
+      <div class="mobile-bnav">
+        <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
+        <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
+        <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
+        <div class="ni on"><i class="ti ti-layout-dashboard"></i>Painel</div>
+        <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+      </div>
+    </div>
+
+    <!-- PERFIL SCREEN -->
+    <div class="screen" id="s-perfil">
+      <div class="desk-topbar">
+        <h2>Meu Perfil</h2>
+        <button class="btn-sm" style="background:var(--gbg);color:var(--green);margin-left:auto" onclick="openEditPerfil()"><i class="ti ti-edit"></i> Editar perfil</button>
+      </div>
+      <div class="perfil-layout">
+        <div class="perfil-left">
+          <div class="pf-ava-big" onclick="openEditPerfil()">
+            <span id="pf-inicial">GN</span>
+            <div class="pf-ava-overlay"><i class="ti ti-edit" style="color:#fff"></i></div>
           </div>
-        </div>
-        <div class="chat-priv"><i class="ti ti-lock"></i> Chat privado — apenas inscritos podem ver</div>
-        <div class="msgs" id="msgs"></div>
-        <div class="chat-input-row">
-          <input class="cinput" id="ctxt" placeholder="Mensagem...">
-          <button class="send" onclick="sendMsg()"><i class="ti ti-send" style="font-size:18px"></i></button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile bottomnav (só aparece no desktop, mobile usa o da lista) -->
-    <div class="mobile-bnav" id="chat-bnav-desk" style="display:none">
-      <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
-      <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
-      <div class="ni on"><i class="ti ti-message-circle"></i>Chat</div>
-      <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
-      <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
-    </div>
-  </div>
-
-  <!-- ════ PAINEL ════ -->
-  <div class="screen" id="s-painel">
-    <div class="desk-topbar"><h2>Painel do Organizador</h2></div>
-    <div class="mobile-topbar"><h1>Painel</h1><p>Gerencie suas ações</p></div>
-    <div class="tabs">
-      <div class="tab on" onclick="painelTab(this,'ativas')">Ativas</div>
-      <div class="tab" onclick="painelTab(this,'encerradas')">Encerradas</div>
-      <div class="tab" onclick="painelTab(this,'minhas')">Minhas inscrições</div>
-    </div>
-    <div class="scroll" id="painel-content"></div>
-    <div class="mobile-bnav">
-      <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
-      <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
-      <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
-      <div class="ni on"><i class="ti ti-layout-dashboard"></i>Painel</div>
-      <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
-    </div>
-  </div>
-
-  <!-- ════ PERFIL ════ -->
-  <div class="screen" id="s-perfil">
-    <div class="desk-topbar">
-      <h2>Meu Perfil</h2>
-      <button class="btn-sm" style="background:var(--gbg);color:var(--green);margin-left:auto" onclick="openEditPerfil()"><i class="ti ti-edit"></i> Editar perfil</button>
-    </div>
-    <div class="perfil-layout">
-      <div class="perfil-left">
-        <div class="pf-ava-big" onclick="openEditPerfil()">
-          <span id="pf-inicial">GN</span>
-          <div class="pf-ava-overlay"><i class="ti ti-edit" style="color:#fff"></i></div>
-        </div>
-        <div style="margin-top:14px">
-          <div style="font-size:18px;font-weight:800;color:var(--text)" id="pf-nome">Guilherme Nogueira</div>
-          <div style="font-size:13px;color:var(--text2);margin-top:4px" id="pf-loc"><i class="ti ti-map-pin"></i> Porto Velho, RO</div>
-          <div style="font-size:13px;color:var(--text2);margin-top:4px;font-style:italic" id="pf-bio">Voluntário ativo 🌱</div>
-        </div>
-        <div style="margin-top:18px;width:100%">
-          <div class="stat-grid">
-            <div class="stat-card"><div class="snum" id="st-part">7</div><div class="slbl">Participações</div></div>
-            <div class="stat-card"><div class="snum" id="st-cri">2</div><div class="slbl">Criadas</div></div>
-            <div class="stat-card"><div class="snum" id="st-h">14h</div><div class="slbl">Impacto</div></div>
+          <div style="margin-top:14px">
+            <div style="font-size:18px;font-weight:800;color:var(--text)" id="pf-nome">Guilherme Nogueira</div>
+            <div style="font-size:13px;color:var(--text2);margin-top:4px" id="pf-loc"><i class="ti ti-map-pin"></i> Porto Velho, RO</div>
+            <div style="font-size:13px;color:var(--text2);margin-top:4px;font-style:italic" id="pf-bio">Voluntário ativo 🌱</div>
           </div>
-        </div>
-        <button class="btn btn-out" style="margin-top:16px;width:100%" onclick="openEditPerfil()"><i class="ti ti-edit"></i> Editar perfil</button>
-      </div>
-      <div class="perfil-right">
-        <div class="lbl">Conquistas</div>
-        <div class="selos-grid">
-          <div class="selo"><div class="sicon">🌳</div><div class="sname">Primeira ação</div></div>
-          <div class="selo"><div class="sicon">🌲</div><div class="sname">Guardião do Verde</div></div>
-          <div class="selo"><div class="sicon">🤝</div><div class="sname">Organizador</div></div>
-          <div class="selo"><div class="sicon">⭐</div><div class="sname">5 ações</div></div>
-          <div class="selo off" id="selo-10"><div class="sicon">🏆</div><div class="sname">10 ações</div></div>
-          <div class="selo off" id="selo-emb"><div class="sicon">🌍</div><div class="sname">Embaixador</div></div>
-        </div>
-        <div class="prog-box">
-          <div class="prog-row"><span style="color:var(--text2)">Próxima conquista: <strong>10 ações 🏆</strong></span><span style="color:var(--green);font-weight:700" id="prog-txt">7/10</span></div>
-          <div class="vbar" style="height:7px"><div class="vfill" id="prog-bar" style="width:70%"></div></div>
-        </div>
-        <div class="lbl">Histórico de participações</div>
-        <div id="hist-list"></div>
-      </div>
-    </div>
-    <div class="mobile-bnav">
-      <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
-      <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
-      <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
-      <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
-      <div class="ni on"><i class="ti ti-user"></i>Perfil</div>
-    </div>
-  </div>
-
-  <!-- ════ CRIAR ════ -->
-  <div class="screen" id="s-criar">
-    <div class="desk-topbar"><h2>Nova Ação</h2></div>
-    <div class="mobile-topbar" style="padding-bottom:10px">
-      <button class="back-btn" onclick="goTo('feed')"><i class="ti ti-arrow-left"></i> Cancelar</button>
-      <div style="font-size:17px;font-weight:800;margin-top:8px">Nova Ação</div>
-    </div>
-    <div class="scroll">
-      <div style="max-width:700px">
-        <div class="form-layout">
-          <div class="fg form-full"><label class="fl">Nome da ação *</label><input class="fi" id="f-nome" placeholder="Ex: Mutirão de Limpeza — Praça Central"></div>
-          <div class="fg form-full">
-            <label class="fl">Categoria *</label>
-            <div class="cat-grid">
-              <div class="cat-opt on" data-cat="meio" onclick="selCat(this)">🌳 Meio Ambiente</div>
-              <div class="cat-opt" data-cat="animais" onclick="selCat(this)">🐾 Animais</div>
-              <div class="cat-opt" data-cat="social" onclick="selCat(this)">🤝 Social</div>
-              <div class="cat-opt" data-cat="saude" onclick="selCat(this)">💉 Saúde</div>
-              <div class="cat-opt" data-cat="edu" onclick="selCat(this)">📚 Educação</div>
-              <div class="cat-opt" data-cat="outro" onclick="selCat(this)">✨ Outro</div>
+          <div style="margin-top:18px;width:100%">
+            <div class="stat-grid">
+              <div class="stat-card"><div class="snum" id="st-part">0</div><div class="slbl">Participações</div></div>
+              <div class="stat-card"><div class="snum" id="st-cri">0</div><div class="slbl">Criadas</div></div>
+              <div class="stat-card"><div class="snum" id="st-h">0h</div><div class="slbl">Impacto</div></div>
             </div>
           </div>
-          <div class="fg"><label class="fl">Data *</label><input class="fi" type="date" id="f-data"></div>
-          <div class="fg"><label class="fl">Horário *</label><input class="fi" type="time" id="f-hora"></div>
-          <div class="fg form-full"><label class="fl">Local / Endereço *</label><input class="fi" id="f-local" placeholder="Ex: Parque Circuito, Porto Velho – RO"></div>
-          <div class="fg"><label class="fl">Nº máximo de vagas *</label><input class="fi" type="number" min="1" id="f-vagas" placeholder="Ex: 20"></div>
-          <div class="fg"></div>
-          <div class="fg form-full"><label class="fl">Descrição</label><textarea class="fi" rows="3" id="f-desc" placeholder="Descreva o objetivo da ação..." style="resize:vertical"></textarea></div>
-          <div class="fg form-full"><label class="fl">O que levar</label><input class="fi" id="f-levar" placeholder="Ex: Água, protetor solar, roupa que pode sujar"></div>
+          <button class="btn btn-out" style="margin-top:16px;width:100%" onclick="openEditPerfil()"><i class="ti ti-edit"></i> Editar perfil</button>
+          <button class="btn-sair-perfil" onclick="fazerLogout()"><i class="ti ti-logout"></i> Sair da conta</button>
         </div>
-        <button class="btn btn-green" style="max-width:300px" onclick="publicarAcao()"><i class="ti ti-rocket"></i> Publicar Ação</button>
-        <button class="btn btn-gray" style="max-width:300px" onclick="goTo('feed')"><i class="ti ti-x"></i> Cancelar</button>
-        <div style="height:20px"></div>
+        <div class="perfil-right">
+          <div class="lbl">Conquistas</div>
+          <div class="selos-grid">
+            <div class="selo"><div class="sicon">🌳</div><div class="sname">Primeira ação</div></div>
+            <div class="selo"><div class="sicon">🌲</div><div class="sname">Guardião do Verde</div></div>
+            <div class="selo"><div class="sicon">🤝</div><div class="sname">Organizador</div></div>
+            <div class="selo"><div class="sicon">⭐</div><div class="sname">5 ações</div></div>
+            <div class="selo off" id="selo10"><div class="sicon">🏆</div><div class="sname">10 ações</div></div>
+            <div class="selo off" id="seloEmb"><div class="sicon">🌍</div><div class="sname">Embaixador</div></div>
+          </div>
+          <div class="prog-box">
+            <div class="prog-row"><span style="color:var(--text2)">Próxima conquista: <strong>10 ações 🏆</strong></span><span style="color:var(--green);font-weight:700" id="progTxt">0/10</span></div>
+            <div class="vbar" style="height:7px"><div class="vfill" id="progBar" style="width:0%"></div></div>
+          </div>
+          <div class="lbl">Histórico de participações</div>
+          <div id="histList"></div>
+        </div>
+      </div>
+      <div class="mobile-bnav">
+        <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
+        <div class="ni" onclick="goTo('criar')"><i class="ti ti-plus"></i>Criar</div>
+        <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
+        <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
+        <div class="ni on"><i class="ti ti-user"></i>Perfil</div>
       </div>
     </div>
-    <div class="mobile-bnav">
-      <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
-      <div class="ni on"><i class="ti ti-plus"></i>Criar</div>
-      <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
-      <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
-      <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+
+    <!-- CRIAR SCREEN -->
+    <div class="screen" id="s-criar">
+      <div class="desk-topbar"><h2>Nova Ação</h2></div>
+      <div class="mobile-topbar" style="padding-bottom:10px">
+        <button class="back-btn" onclick="goTo('feed')"><i class="ti ti-arrow-left"></i> Cancelar</button>
+        <div style="font-size:17px;font-weight:800;margin-top:8px">Nova Ação</div>
+      </div>
+      <div class="scroll">
+        <div style="max-width:700px">
+          <div class="form-layout">
+            <div class="fg form-full"><label class="fl">Nome da ação *</label><input class="fi" id="fNome" placeholder="Ex: Mutirão de Limpeza — Praça Central"></div>
+            <div class="fg form-full">
+              <label class="fl">Categoria *</label>
+              <div class="cat-grid">
+                <div class="cat-opt on" data-cat="meio" onclick="selCat(this)">🌳 Meio Ambiente</div>
+                <div class="cat-opt" data-cat="animais" onclick="selCat(this)">🐾 Animais</div>
+                <div class="cat-opt" data-cat="social" onclick="selCat(this)">🤝 Social</div>
+                <div class="cat-opt" data-cat="saude" onclick="selCat(this)">💉 Saúde</div>
+                <div class="cat-opt" data-cat="edu" onclick="selCat(this)">📚 Educação</div>
+                <div class="cat-opt" data-cat="outro" onclick="selCat(this)">✨ Outro</div>
+              </div>
+            </div>
+            <div class="fg"><label class="fl">Data *</label><input class="fi" type="date" id="fData"></div>
+            <div class="fg"><label class="fl">Horário *</label><input class="fi" type="time" id="fHora"></div>
+            <div class="fg form-full"><label class="fl">Local / Endereço *</label><input class="fi" id="fLocal" placeholder="Ex: Parque Circuito, Porto Velho – RO"></div>
+            <div class="fg"><label class="fl">Nº máximo de vagas *</label><input class="fi" type="number" min="1" id="fVagas" placeholder="Ex: 20"></div>
+            <div class="fg"></div>
+            <div class="fg form-full"><label class="fl">Descrição</label><textarea class="fi" rows="3" id="fDesc" placeholder="Descreva o objetivo da ação..." style="resize:vertical"></textarea></div>
+            <div class="fg form-full"><label class="fl">O que levar</label><input class="fi" id="fLevar" placeholder="Ex: Água, protetor solar, roupa que pode sujar"></div>
+          </div>
+          <button class="btn btn-green" style="max-width:300px" onclick="publicarAcao()"><i class="ti ti-rocket"></i> Publicar Ação</button>
+          <button class="btn btn-gray" style="max-width:300px" onclick="goTo('feed')"><i class="ti ti-x"></i> Cancelar</button>
+          <div style="height:20px"></div>
+        </div>
+      </div>
+      <div class="mobile-bnav">
+        <div class="ni" onclick="goTo('feed')"><i class="ti ti-home"></i>Início</div>
+        <div class="ni on"><i class="ti ti-plus"></i>Criar</div>
+        <div class="ni" onclick="goTo('chat')"><i class="ti ti-message-circle"></i>Chat</div>
+        <div class="ni" onclick="goTo('painel')"><i class="ti ti-layout-dashboard"></i>Painel</div>
+        <div class="ni" onclick="goTo('perfil')"><i class="ti ti-user"></i>Perfil</div>
+      </div>
     </div>
   </div>
+</div>
 
-</div><!-- /main -->
-</div><!-- /app -->
-
-<!-- ═══════════ MODAIS ═══════════ -->
-<div class="modal-bg" id="modal-edit-acao">
+<!-- MODAIS -->
+<div class="modal-bg" id="modalEditAcao">
   <div class="modal">
-    <div class="modal-title">Editar Ação <button onclick="closeModal('modal-edit-acao')">×</button></div>
-    <div class="fg"><label class="fl">Nome</label><input class="fi" id="ea-nome"></div>
+    <div class="modal-title">Editar Ação <button onclick="closeModal('modalEditAcao')">×</button></div>
+    <div class="fg"><label class="fl">Nome</label><input class="fi" id="eaNome"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="fg"><label class="fl">Data</label><input class="fi" type="date" id="ea-data"></div>
-      <div class="fg"><label class="fl">Horário</label><input class="fi" type="time" id="ea-hora"></div>
+      <div class="fg"><label class="fl">Data</label><input class="fi" type="date" id="eaData"></div>
+      <div class="fg"><label class="fl">Horário</label><input class="fi" type="time" id="eaHora"></div>
     </div>
-    <div class="fg"><label class="fl">Local</label><input class="fi" id="ea-local"></div>
-    <div class="fg"><label class="fl">Vagas totais</label><input class="fi" type="number" id="ea-vagas"></div>
-    <div class="fg"><label class="fl">Descrição</label><textarea class="fi" rows="3" id="ea-desc" style="resize:vertical"></textarea></div>
-    <div class="fg"><label class="fl">O que levar</label><input class="fi" id="ea-levar"></div>
+    <div class="fg"><label class="fl">Local</label><input class="fi" id="eaLocal"></div>
+    <div class="fg"><label class="fl">Vagas totais</label><input class="fi" type="number" id="eaVagas"></div>
+    <div class="fg"><label class="fl">Descrição</label><textarea class="fi" rows="3" id="eaDesc" style="resize:vertical"></textarea></div>
+    <div class="fg"><label class="fl">O que levar</label><input class="fi" id="eaLevar"></div>
     <button class="btn btn-green" onclick="salvarEdicaoAcao()"><i class="ti ti-check"></i> Salvar alterações</button>
     <button class="btn btn-red" onclick="encerrarAcaoModal()"><i class="ti ti-lock"></i> Encerrar ação</button>
   </div>
 </div>
 
-<div class="modal-bg" id="modal-edit-perfil">
+<div class="modal-bg" id="modalEditPerfil">
   <div class="modal">
-    <div class="modal-title">Editar Perfil <button onclick="closeModal('modal-edit-perfil')">×</button></div>
-    <div class="fg"><label class="fl">Nome completo</label><input class="fi" id="ep-nome"></div>
-    <div class="fg"><label class="fl">Localização</label><input class="fi" id="ep-loc" placeholder="Ex: Porto Velho, RO"></div>
-    <div class="fg"><label class="fl">Bio</label><input class="fi" id="ep-bio" placeholder="Ex: Voluntário ativo 🌱"></div>
+    <div class="modal-title">Editar Perfil <button onclick="closeModal('modalEditPerfil')">×</button></div>
+    <div class="fg"><label class="fl">Nome completo</label><input class="fi" id="epNome"></div>
+    <div class="fg"><label class="fl">Localização</label><input class="fi" id="epLoc" placeholder="Ex: Porto Velho, RO"></div>
+    <div class="fg"><label class="fl">Bio</label><input class="fi" id="epBio" placeholder="Ex: Voluntário ativo 🌱"></div>
     <button class="btn btn-green" onclick="salvarPerfil()"><i class="ti ti-check"></i> Salvar</button>
   </div>
 </div>
 
-<div class="modal-bg" id="modal-notif">
+<div class="modal-bg" id="modalNotif">
   <div class="modal">
-    <div class="modal-title">Notificações <button onclick="closeModal('modal-notif')">×</button></div>
-    <div id="notif-list"></div>
+    <div class="modal-title">Notificações <button onclick="closeModal('modalNotif')">×</button></div>
+    <div id="notifList"></div>
   </div>
 </div>
 
-<div class="modal-bg" id="modal-aviso">
+<div class="modal-bg" id="modalAviso">
   <div class="modal">
-    <div class="modal-title">Enviar aviso <button onclick="closeModal('modal-aviso')">×</button></div>
-    <div class="fg"><label class="fl">Mensagem para todos os inscritos</label><textarea class="fi" rows="4" id="aviso-txt" placeholder="Ex: Atenção! O ponto de encontro mudou para..." style="resize:vertical"></textarea></div>
+    <div class="modal-title">Enviar aviso <button onclick="closeModal('modalAviso')">×</button></div>
+    <div class="fg"><label class="fl">Mensagem para todos os inscritos</label><textarea class="fi" rows="4" id="avisoMsg" placeholder="Ex: Atenção! O ponto de encontro mudou para..." style="resize:vertical"></textarea></div>
     <button class="btn btn-green" onclick="enviarAviso()"><i class="ti ti-send"></i> Enviar para todos</button>
   </div>
 </div>
 
-<div class="toast" id="toast-el"></div>
+<div class="toast" id="toastMsg"></div>
 
-<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const MESES=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-const DIAS=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
-const EMOJIS={meio:'🌳',animais:'🐾',social:'🤝',saude:'💉',edu:'📚',outro:'✨'};
-const BGS={meio:'#E8F5E9',animais:'#FFF3E0',social:'#E3F2FD',saude:'#FCE4EC',edu:'#F3E5F5',outro:'#F5F5F5'};
-const CORS={meio:'#1D5C2E',animais:'#E65100',social:'#0D47A1',saude:'#C2185B',edu:'#6A1B9A',outro:'#333'};
-const TAGS={meio:'Meio Ambiente',animais:'Animais',social:'Social',saude:'Saúde',edu:'Educação',outro:'Outro'};
+// ============================================
+// CONFIGURAÇÃO SUPABASE
+// ============================================
+const SUPABASE_URL = "https://pealyyxmcoiejwfnshbu.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlYWx5eXhtY29pZWp3Zm5zaGJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExNzIxMzQsImV4cCI6MjA5Njc0ODEzNH0.Cx3urFDK7C9pk0adjuAPiBTvCYfm-KrOo-tHX1sCLF0"; //SUPABASE AQUI!
+const supabaseRealtime = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 
-let catAtual='all', acaoAtualId=null, painelTabAtual='ativas', editandoAcaoId=null;
-let chatAcaoAtual=null;
+let canalChat = null;
 
-let perfil={nome:'Guilherme Nogueira',loc:'Porto Velho, RO',bio:'Voluntário ativo 🌱'};
-let inscritas=new Set();
-let notificacoes=[
-  {txt:'🗑️ Carla Leticia enviou aviso no chat do Mutirão',tempo:'5 min atrás',lida:false},
-  {txt:'✅ Sua inscrição no Mutirão foi confirmada',tempo:'2h atrás',lida:false},
-  {txt:'🐾 Nova ação: Feira de Adoção — 15 Jun',tempo:'1 dia atrás',lida:false},
-];
+// ============================================
+// SISTEMA DE LOGIN COMPLETO
+// ============================================
 
-let acoes=[
-  {id:'mutirao',cat:'meio',emoji:'🗑️',bg:'#E8F5E9',tag:'Meio Ambiente',tagBg:'#E8F5E9',tagCor:'#1D5C2E',
-   titulo:'Mutirão de Limpeza — Parque Circuito',criador:'eu',
-   data:'Sáb, 14 Jun',hora:'07:30',dist:'2.1 km',vPreench:12,vTotal:20,
-   dataLong:'Sábado, 14 de junho de 2026',horaLong:'07:30 – 11:00',dataISO:'2026-06-14',horaISO:'07:30',
-   local:'Parque Circuito, Porto Velho – RO',
-   desc:'Venha ajudar a limpar e revitalizar o Parque Circuito! Levaremos sacos de lixo e luvas. Traga boa energia e vontade de fazer a diferença.',
-   levar:'Água, protetor solar, roupa que pode sujar.',encerrada:false,
-   inscritos:[{ini:'ME',bg:'#E3F2FD',cor:'#0D47A1',nome:'Maria Eduarda Mendes',sub:'Inscrita há 1 dia'},{ini:'IT',bg:'#FFF3E0',cor:'#E65100',nome:'Ítalo Rogerio',sub:'Inscrito há 3 dias'},{ini:'YS',bg:'#F3E5F5',cor:'#6A1B9A',nome:'Yasmim Síria',sub:'Inscrita há 5h'},{ini:'RF',bg:'#E8F5E9',cor:'#1D5C2E',nome:'Ricardo Felipe',sub:'Inscrito há 1 dia'}],
-   msgs:[{nome:'Carla Leticia (Organizadora)',txt:'Olá! Ponto de encontro: portão principal do Parque Circuito. 07:30! 🗑️',time:'08:14',me:false},{nome:'Guilherme N.',txt:'Alguém pode levar vassoura extra? Tenho só uma.',time:'09:02',me:false},{nome:'Maria Eduarda',txt:'Posso levar 2 vassouras!',time:'09:18',me:false},{nome:'Ricardo F.',txt:'Posso levar 5 sacos de lixo de 100L!',time:'09:45',me:false}]},
-  {id:'feira',cat:'animais',emoji:'🐾',bg:'#FFF3E0',tag:'Animais',tagBg:'#FFF3E0',tagCor:'#E65100',
-   titulo:'Feira de Adoção Responsável',criador:'outro',
-   data:'Dom, 15 Jun',hora:'09:00',dist:'4.7 km',vPreench:18,vTotal:25,
-   dataLong:'Domingo, 15 de junho de 2026',horaLong:'09:00 – 14:00',dataISO:'2026-06-15',horaISO:'09:00',
-   local:'Praça Madeira-Mamoré, Porto Velho',
-   desc:'Ajude animais a encontrar um lar! Seja voluntário na organização do evento e no atendimento ao público.',
-   levar:'Disposição, amor pelos animais e roupas confortáveis.',encerrada:false,
-   inscritos:[],msgs:[{nome:'Organizador',txt:'Bem-vindos! A feira começa às 09h. 🐾',time:'08:00',me:false}]},
-  {id:'plantio',cat:'social',emoji:'🌱',bg:'#E3F2FD',tag:'Social',tagBg:'#E3F2FD',tagCor:'#0D47A1',
-   titulo:'Plantio Comunitário — Liga de MCs',criador:'outro',
-   data:'Sáb, 21 Jun',hora:'08:00',dist:'1.3 km',vPreench:5,vTotal:30,
-   dataLong:'Sábado, 21 de junho de 2026',horaLong:'08:00 – 12:00',dataISO:'2026-06-21',horaISO:'08:00',
-   local:'Comunidade Nova Esperança, Porto Velho',
-   desc:'Plantio de mudas nativas e revitalização de espaços verdes. Ferramentas fornecidas.',
-   levar:'Roupas que podem sujar, protetor solar e água.',encerrada:false,
-   inscritos:[],msgs:[{nome:'Carla Leticia',txt:'Vamos plantar juntos! Ferramentas fornecidas 🌱',time:'07:00',me:false}]},
-  {id:'oficina',cat:'edu',emoji:'♻️',bg:'#F3E5F5',tag:'Educação',tagBg:'#F3E5F5',tagCor:'#6A1B9A',
-   titulo:'Oficina de Reciclagem Criativa',criador:'outro',
-   data:'Sáb, 28 Jun',hora:'14:00',dist:'3.8 km',vPreench:8,vTotal:15,
-   dataLong:'Sábado, 28 de junho de 2026',horaLong:'14:00 – 17:00',dataISO:'2026-06-28',horaISO:'14:00',
-   local:'Centro Comunitário São João, Porto Velho',
-   desc:'Aprenda técnicas de reciclagem criativa e ajude crianças da comunidade.',
-   levar:'Tesoura, régua e criatividade!',encerrada:false,
-   inscritos:[],msgs:[{nome:'Organizador',txt:'Materiais fornecidos! Só trazer criatividade 🎨',time:'13:00',me:false}]},
-  {id:'saude',cat:'saude',emoji:'💉',bg:'#FCE4EC',tag:'Saúde',tagBg:'#FCE4EC',tagCor:'#C2185B',
-   titulo:'Campanha de Vacinação Comunitária',criador:'outro',
-   data:'Dom, 22 Jun',hora:'08:00',dist:'5.2 km',vPreench:10,vTotal:40,
-   dataLong:'Domingo, 22 de junho de 2026',horaLong:'08:00 – 14:00',dataISO:'2026-06-22',horaISO:'08:00',
-   local:'UBS Nova Floresta, Porto Velho',
-   desc:'Voluntários para apoio à campanha de vacinação. Sem necessidade de formação na área da saúde.',
-   levar:'Roupas confortáveis e água.',encerrada:false,
-   inscritos:[],msgs:[{nome:'Organizador',txt:'Obrigado por participar! Chegue cedo 💉',time:'07:30',me:false}]},
-];
+let usuarioLogado = null;
+let usuariosCadastrados = [];
+let acoes = [];
+let inscritas = new Set();
+let chatAtualId = null;
+let catAtual = 'all';
+let acaoAtualId = null;
+let painelTabAtual = 'ativas';
+let editandoAcaoId = null;
 
-let historico=[
-  {emoji:'🗑️',bg:'#E8F5E9',titulo:'Mutirão Rio Madeira',data:'07 Jun 2026 · Meio Ambiente',h:'+2h',tagBg:'#E8F5E9',tagCor:'#1D5C2E'},
-  {emoji:'🐾',bg:'#FFF3E0',titulo:'Feira de Adoção Pets',data:'25 Mai 2026 · Animais',h:'+3h',tagBg:'#FFF3E0',tagCor:'#E65100'},
-  {emoji:'🌱',bg:'#E3F2FD',titulo:'Plantio Comunitário',data:'10 Mai 2026 · Social',h:'+2h',tagBg:'#E3F2FD',tagCor:'#0D47A1'},
-  {emoji:'♻️',bg:'#F3E5F5',titulo:'Oficina de Reciclagem',data:'28 Abr 2026 · Educação',h:'+2h',tagBg:'#F3E5F5',tagCor:'#6A1B9A'},
-  {emoji:'🗑️',bg:'#E8F5E9',titulo:'Mutirão Parque Natural',data:'15 Mar 2026 · Meio Ambiente',h:'+3h',tagBg:'#E8F5E9',tagCor:'#1D5C2E'},
-];
+// ============================================
+// FUNÇÕES DE API SUPABASE
+// ============================================
 
-// ── RELÓGIO ──
-function tick(){const n=new Date();document.getElementById('clock2')&&(document.getElementById('clock2').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0'));}
-const clockEl=document.querySelector('.status');
-if(clockEl){clockEl.querySelector('span').id='clock2';}
-tick();setInterval(tick,10000);
+// ============================================
+// SEGURANÇA — HASH DE SENHA (SHA-256 + salt)
+// A senha nunca é salva em texto puro.
+// ============================================
+const APP_SALT = 'acoes-socioambientais-2026-pvh';
 
-// ── TOAST ──
-let toastT;
-function toast(msg){const el=document.getElementById('toast-el');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2500);}
+async function hashSenha(senha) {
+  const dados = new TextEncoder().encode(senha + APP_SALT);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', dados);
+  return Array.from(new Uint8Array(hashBuffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+}
 
-// ── MODAL ──
-function openModal(id){document.getElementById(id).classList.add('open');}
-function closeModal(id){document.getElementById(id).classList.remove('open');}
-document.querySelectorAll('.modal-bg').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
+async function apiRequest(endpoint, method = 'GET', body = null) {
+  const options = {
+    method,
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    }
+  };
 
-// ── NAVEGAÇÃO ──
-function goTo(screen,acaoId){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('on'));
-  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
-  const el=document.getElementById('s-'+screen);
-  if(el) el.classList.add('active');
-  document.querySelectorAll('[data-screen="'+screen+'"]').forEach(l=>l.classList.add('on'));
-  // mobile bottomnav highlight
-  const niMap={feed:0,criar:1,chat:2,painel:3,perfil:4};
+  if (body) {
+    options.body = JSON.stringify(body);
+  }
+
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/${endpoint}`,
+    options
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || `Erro ${response.status}`);
+  }
+
+  if (response.status === 204) {
+    return null;
+  }
+
+  const text = await response.text();
+
+  if (!text || text.trim() === '') {
+    return null;
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
+
+// ============================================
+// LOGIN E CADASTRO
+// ============================================
+
+function toggleLoginTab(tab) {
+  document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+  if (tab === 'login') {
+    document.querySelector('.login-tab:first-child').classList.add('active');
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('cadastroForm').style.display = 'none';
+  } else {
+    document.querySelector('.login-tab:last-child').classList.add('active');
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('cadastroForm').style.display = 'block';
+  }
+  document.getElementById('loginMessage').innerHTML = '';
+}
+
+async function fazerCadastro() {
+  const nome = document.getElementById('cadastroNome').value.trim();
+  const email = document.getElementById('cadastroEmail').value.trim();
+  const senha = document.getElementById('cadastroPassword').value;
+  const confirm = document.getElementById('cadastroConfirmPassword').value;
+  const msg = document.getElementById('loginMessage');
+  
+  if (!nome || !email || !senha) {
+    msg.innerHTML = ' Preencha todos os campos';
+    return;
+  }
+  if (senha !== confirm) {
+    msg.innerHTML = ' As senhas não coincidem';
+    return;
+  }
+  if (senha.length < 6) {
+    msg.innerHTML = ' A senha deve ter pelo menos 6 caracteres';
+    return;
+  }
+
+  if (window._cadastrando) return;
+  window._cadastrando = true;
+  const btnCad = document.querySelector('#cadastroForm .btn-login') || document.querySelector('.btn-login');
+  if (btnCad) { btnCad.disabled = true; btnCad.textContent = 'Criando conta...'; }
+
+  try {
+    const usuarios = await apiRequest(`usuarios?email=eq.${encodeURIComponent(email)}`);
+    if (usuarios.length > 0) {
+      msg.innerHTML = ' Este email já está cadastrado';
+      return;
+    }
+
+    const senhaHash = await hashSenha(senha);
+
+    await apiRequest('usuarios', 'POST', {
+      nome: nome,
+      email: email,
+      senha: senhaHash,
+      localizacao: 'Porto Velho, RO'
+    });
+
+    msg.style.color = 'green';
+    msg.innerHTML = ' Conta criada! Faça login.';
+    setTimeout(() => {
+      toggleLoginTab('login');
+      document.getElementById('loginEmail').value = email;
+      document.getElementById('loginPassword').value = '';
+      msg.innerHTML = '';
+    }, 1500);
+  } catch (err) {
+    msg.innerHTML = ' Erro ao cadastrar: ' + err.message;
+  } finally {
+    window._cadastrando = false;
+    if (btnCad) { btnCad.disabled = false; btnCad.textContent = 'Criar conta'; }
+  }
+}
+
+async function fazerLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const senha = document.getElementById('loginPassword').value;
+  const msg = document.getElementById('loginMessage');
+  
+  if (!email || !senha) {
+    msg.innerHTML = ' Preencha email e senha';
+    return;
+  }
+
+  if (window._logando) return;
+  window._logando = true;
+  const btnLog = document.querySelector('#loginForm .btn-login') || document.querySelector('.btn-login');
+  if (btnLog) { btnLog.disabled = true; btnLog.textContent = 'Entrando...'; }
+
+  try {
+    const usuarios = await apiRequest(`usuarios?email=eq.${encodeURIComponent(email)}`);
+
+    if (usuarios.length === 0) {
+      msg.innerHTML = ' Email ou senha incorretos';
+      return;
+    }
+
+    const usuarioBanco = usuarios[0];
+    const senhaHash = await hashSenha(senha);
+    const senhaConfere = (usuarioBanco.senha === senhaHash) || (usuarioBanco.senha === senha);
+    if (!senhaConfere) {
+      msg.innerHTML = ' Email ou senha incorretos';
+      return;
+    }
+    // Migra conta antiga (texto puro) para hash no primeiro login
+    if (usuarioBanco.senha === senha && usuarioBanco.senha !== senhaHash) {
+      try { await apiRequest(`usuarios?id=eq.${usuarioBanco.id}`, 'PATCH', { senha: senhaHash }); } catch(e) {}
+    }
+
+    usuarioLogado = usuarioBanco;
+    localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+    
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    
+    const iniciais = usuarioLogado.nome.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+    document.getElementById('sb-ava').innerHTML = iniciais;
+    document.getElementById('sb-nome').innerHTML = usuarioLogado.nome;
+    document.getElementById('pf-inicial').innerHTML = iniciais;
+    document.getElementById('pf-nome').innerHTML = usuarioLogado.nome;
+    
+    await carregarDadosIniciais();
+    renderFeed();
+    renderPerfil();
+  } catch (err) {
+    msg.innerHTML = '❌ Erro: ' + err.message;
+  } finally {
+    window._logando = false;
+    if (btnLog) { btnLog.disabled = false; btnLog.textContent = 'Entrar'; }
+  }
+}
+
+function fazerLogout() {
+  usuarioLogado = null;
+  localStorage.removeItem('usuarioLogado');
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  inscritas.clear();
+  chatAtualId = null;
+}
+
+function verificarSessao() {
+  const saved = localStorage.getItem('usuarioLogado');
+  if (saved) {
+    usuarioLogado = JSON.parse(saved);
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    const iniciais = usuarioLogado.nome.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+    document.getElementById('sb-ava').innerHTML = iniciais;
+    document.getElementById('sb-nome').innerHTML = usuarioLogado.nome;
+    document.getElementById('pf-inicial').innerHTML = iniciais;
+    document.getElementById('pf-nome').innerHTML = usuarioLogado.nome;
+    carregarDadosIniciais();
+  }
+}
+
+// ============================================
+// CARREGAR DADOS DO SUPABASE
+// ============================================
+
+async function carregarDadosIniciais() {
+  await carregarAcoes();
+  await carregarInscricoes();
+  await carregarEstatisticas();
+  renderFeed();
+  renderPerfil();
+}
+
+async function carregarAcoes() {
+  try {
+    const busca = getBusca();
+    let url = `acoes?select=*&encerrada=eq.false&order=data.asc`;
+    if (catAtual !== 'all') url += `&categoria=eq.${catAtual}`;
+    
+    const acoesDB = await apiRequest(url);
+    acoes = acoesDB;
+    renderFeed();
+  } catch (err) {
+    console.error('Erro ao carregar ações:', err);
+  }
+}
+
+async function carregarInscricoes() {
+  if (!usuarioLogado) return;
+  try {
+    const inscricoes = await apiRequest(`inscricoes?select=*&usuario_id=eq.${usuarioLogado.id}`);
+    inscritas.clear();
+    inscricoes.forEach(insc => inscritas.add(insc.acao_id));
+  } catch (err) {
+    console.error('Erro ao carregar inscrições:', err);
+  }
+}
+
+async function carregarEstatisticas() {
+  if (!usuarioLogado) return;
+  try {
+    const minhasAcoes = await apiRequest(`acoes?select=id&organizador_id=eq.${usuarioLogado.id}`);
+    const participacoes = inscritas.size;
+    
+    document.getElementById('st-part').innerHTML = participacoes;
+    document.getElementById('st-cri').innerHTML = minhasAcoes.length;
+    document.getElementById('st-h').innerHTML = (participacoes * 2) + 'h';
+    
+    const prog = Math.min(participacoes, 10);
+    document.getElementById('progTxt').innerHTML = prog + '/10';
+    document.getElementById('progBar').style.width = (prog / 10 * 100) + '%';
+    if (prog >= 10) document.getElementById('selo10')?.classList.remove('off');
+    if (minhasAcoes.length >= 3) document.getElementById('seloEmb')?.classList.remove('off');
+  } catch (err) {
+    console.error('Erro ao carregar estatísticas:', err);
+  }
+}
+
+// ============================================
+// FUNÇÕES DO SISTEMA
+// ============================================
+
+function toast(msg) {
+  const t = document.getElementById('toastMsg');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+document.querySelectorAll('.modal-bg').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }));
+
+function goTo(screen, id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(`s-${screen}`).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('on'));
+  document.querySelectorAll('.ni').forEach(n => n.classList.remove('on'));
+  document.querySelectorAll(`[data-screen="${screen}"]`).forEach(l => l.classList.add('on'));
+  
+  const niMap = { feed: 0, criar: 1, chat: 2, painel: 3, perfil: 4 };
   document.querySelectorAll('.mobile-bnav .ni')[niMap[screen]]?.classList.add('on');
-  if(acaoId){acaoAtualId=acaoId;carregarDetalhe(acaoId);}
-  if(screen==='feed') renderFeed();
-  if(screen==='painel') renderPainel();
-  if(screen==='perfil') renderPerfil();
-  if(screen==='chat'){
-    // Sempre começa pela lista no mobile; no desktop vai direto à conversa se tiver acaoId
-    const lista=document.getElementById('mob-chat-list-screen');
-    const conv=document.getElementById('chat-conversa');
-    const bnav=document.getElementById('chat-bnav-desk');
-    if(window.innerWidth<=700){
-      if(acaoId){
-        // Veio de uma ação específica: abre direto a conversa
-        lista.style.display='none';
-        conv.style.display='flex';conv.style.flexDirection='column';conv.style.flex='1';conv.style.overflow='hidden';
-        bnav.style.display='flex';
-        renderChatList();abrirChat(acaoId);
-      } else {
-        // Abriu o chat pelo menu: mostra lista
-        lista.style.display='flex';
-        conv.style.display='none';
-        bnav.style.display='none';
-        renderChatList();
-      }
-    } else {
-      lista.style.display='none';
-      conv.style.display='flex';conv.style.flex='1';conv.style.overflow='hidden';
-      renderChatList();
-      if(acaoId){abrirChat(acaoId);}
+  
+  if (id) { acaoAtualId = id; carregarDetalhe(id); }
+  if (screen === 'feed') renderFeed();
+  if (screen === 'painel') renderPainel();
+  if (screen === 'perfil') renderPerfil();
+  if (screen === 'chat') {
+    renderChatList();
+    if (window.innerWidth <= 700) {
+      document.getElementById('mobChatList').style.display = 'flex';
+      document.getElementById('chatConversa').style.display = 'none';
+      document.getElementById('chatBottomNav').style.display = 'none';
     }
   }
 }
 
-// ── FEED ──
-function filterCat(el,cat){document.querySelectorAll('.pill').forEach(p=>p.classList.remove('on'));el.classList.add('on');catAtual=cat;renderFeed();}
-
-function getBusca(){return(document.getElementById('desk-search')?.value||document.getElementById('mob-search')?.value||'').toLowerCase().trim();}
-
-function renderFeed(){
-  const busca=getBusca();
-  const lista=acoes.filter(a=>{
-    if(a.encerrada)return false;
-    if(catAtual!=='all'&&a.cat!==catAtual)return false;
-    if(busca&&!a.titulo.toLowerCase().includes(busca)&&!a.local.toLowerCase().includes(busca)&&!a.tag.toLowerCase().includes(busca))return false;
-    return true;
-  });
-  const c=document.getElementById('feed-list');
-  if(!lista.length){c.innerHTML=`<div class="empty"><div class="ei">🌳</div><div class="et">Nenhuma ação encontrada</div><div class="es">Tente outro filtro ou crie uma nova!</div></div>`;return;}
-  const isMobile=window.innerWidth<=700;
-  const gridClass=isMobile?'':'grid-3';
-  c.innerHTML=`<div class="lbl" style="margin-top:0">Próximas ações (${lista.length})</div><div class="${gridClass}">`+lista.map(a=>{
-    const livres=a.vTotal-a.vPreench;const pct=Math.round(a.vPreench/a.vTotal*100);const inscrito=inscritas.has(a.id);
-    return`<div class="card" onclick="goTo('detail','${a.id}')">
-      <div class="card-banner" style="background:${a.bg}">${a.emoji}</div>
-      <div class="card-body">
-        <span class="ctag" style="background:${a.tagBg};color:${a.tagCor}">${a.tag}</span>
-        ${inscrito?'<span class="ctag" style="background:#E8F5E9;color:#1D5C2E;margin-left:4px">✓ Inscrito</span>':''}
-        <div class="card-title">${a.titulo}</div>
-        <div class="card-meta"><span><i class="ti ti-calendar"></i>${a.data}</span><span><i class="ti ti-clock"></i>${a.hora}</span><span><i class="ti ti-map-pin"></i>${a.dist}</span></div>
-        <div class="vbar-wrap"><span>${a.vPreench}/${a.vTotal}</span><div class="vbar"><div class="vfill" style="width:${pct}%"></div></div><span class="vavail">${livres<=0?'❌ Esgotado':livres+' livres'}</span></div>
-      </div></div>`;
-  }).join('')+'</div>';
+function filterCat(el, cat) {
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  catAtual = cat;
+  carregarAcoes();
 }
 
-// ── DETALHE ──
-function carregarDetalhe(id){
-  const a=acoes.find(x=>x.id===id);if(!a)return;
-  document.getElementById('det-banner').textContent=a.emoji;
-  document.getElementById('det-banner').style.background=a.bg;
-  const tag=document.getElementById('det-tag');tag.textContent=a.tag;tag.style.background=a.tagBg;tag.style.color=a.tagCor;
-  document.getElementById('det-title').textContent=a.titulo;
-  const orgNome=a.criador==='eu'?perfil.nome+' (você)':'Carla Leticia · Liga de MCs';
-  document.getElementById('det-org-nome').textContent=orgNome;
-  document.getElementById('det-org2').textContent=orgNome;
-  document.getElementById('det-data').textContent=a.dataLong;
-  document.getElementById('det-hora').textContent=a.horaLong;
-  document.getElementById('det-local').textContent=a.local;
-  const livres=a.vTotal-a.vPreench;
-  document.getElementById('det-vagas').textContent=`${a.vPreench} de ${a.vTotal} vagas preenchidas`;
-  document.getElementById('det-livres').textContent=`${livres} livres`;
-  document.getElementById('det-bar').style.width=Math.round(a.vPreench/a.vTotal*100)+'%';
-  document.getElementById('det-desc').textContent=a.desc;
-  document.getElementById('det-levar').textContent=a.levar;
-  const btn=document.getElementById('btn-inscrever');
-  if(inscritas.has(id)){btn.innerHTML='<i class="ti ti-x"></i> Cancelar inscrição';btn.className='btn btn-red';}
-  else{btn.innerHTML='<i class="ti ti-check"></i> Quero Participar';btn.className='btn btn-green';}
+function getBusca() {
+  return (document.getElementById('desk-search')?.value || document.getElementById('mob-search')?.value || '').toLowerCase().trim();
 }
 
-function inscrever(){
-  const a=acoes.find(x=>x.id===acaoAtualId);if(!a)return;
-  if(inscritas.has(acaoAtualId)){
-    inscritas.delete(acaoAtualId);a.vPreench=Math.max(0,a.vPreench-1);
-    a.inscritos=a.inscritos.filter(i=>i.nome!==perfil.nome);
-    toast('Inscrição cancelada.');carregarDetalhe(acaoAtualId);
-  } else {
-    if(a.vTotal-a.vPreench<=0){toast('⚠️ Vagas esgotadas!');return;}
-    inscritas.add(acaoAtualId);a.vPreench++;
-    a.inscritos.unshift({ini:perfil.nome.split(' ').map(x=>x[0]).join('').slice(0,2).toUpperCase(),bg:'#E8F5E9',cor:'#1D5C2E',nome:perfil.nome,sub:'Recém inscrito'});
-    document.getElementById('inscrito-sub').innerHTML=`Você está inscrito em<br><strong>${a.titulo}</strong><br>${a.data} às ${a.hora}.`;
-    document.getElementById('inscrito-local').innerHTML=`<i class="ti ti-map-pin" style="color:var(--green)"></i> ${a.local}`;
-    document.getElementById('inscrito-back').onclick=()=>goTo('detail',acaoAtualId);
-    document.getElementById('inscrito-back2').onclick=()=>goTo('detail',acaoAtualId);
-    document.getElementById('inscrito-chat-btn').onclick=()=>irChat();
-    historico.unshift({emoji:a.emoji,bg:a.bg,titulo:a.titulo,data:a.data+' · '+a.tag,h:'+2h',tagBg:a.tagBg,tagCor:a.tagCor});
-    atualizarStats();goTo('inscrito');
-  }
-}
-
-function irChat(){goTo('chat');abrirChat(acaoAtualId);}
-
-// ── CHAT ──
-const isMob=()=>window.innerWidth<=700;
-
-function renderChatList(){
-  // Desktop sidebar
-  const c=document.getElementById('chat-list');
-  const todas=acoes.filter(a=>inscritas.has(a.id)||a.criador==='eu');
-  const emptyMsg=`<div style="padding:20px;font-size:13px;color:var(--text3);text-align:center">Inscreva-se em ações<br>para acessar os chats</div>`;
-  if(!todas.length){c.innerHTML=emptyMsg;}
-  else{
-    c.innerHTML=todas.map(a=>{
-      const last=a.msgs[a.msgs.length-1];
-      return`<div class="chat-acao-item ${chatAcaoAtual===a.id?'on':''}" onclick="abrirChat('${a.id}')">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:20px">${a.emoji}</span>
-          <div style="flex:1;min-width:0">
-            <div class="chat-acao-nome">${a.titulo}</div>
-            <div class="chat-acao-last">${last?last.nome.split(' ')[0]+': '+last.txt:'Sem mensagens'}</div>
-          </div>
-        </div></div>`;
-    }).join('');
-  }
-  // Mobile lista
-  const mob=document.getElementById('mob-chat-list');
-  if(!mob)return;
-  if(!todas.length){
-    mob.innerHTML=`<div class="empty" style="padding-top:60px"><div class="ei">💬</div><div class="et">Nenhum chat ainda</div><div class="es">Inscreva-se em uma ação para acessar o chat</div><button class="btn btn-green" onclick="goTo('feed')" style="max-width:220px;margin:16px auto 0"><i class="ti ti-search"></i> Ver ações</button></div>`;
+function renderFeed() {
+  const busca = getBusca();
+  let lista = acoes.filter(a => !a.encerrada);
+  
+  if (catAtual !== 'all') lista = lista.filter(a => a.categoria === catAtual);
+  if (busca) lista = lista.filter(a => a.titulo.toLowerCase().includes(busca) || a.local.toLowerCase().includes(busca));
+  
+  const container = document.getElementById('feed-list');
+  if (!lista.length) {
+    container.innerHTML = `<div class="empty"><div class="ei">🌳</div><div class="et">Nenhuma ação encontrada</div><div class="es">Tente outro filtro ou crie uma nova!</div></div>`;
     return;
   }
-  mob.innerHTML=todas.map(a=>{
-    const last=a.msgs[a.msgs.length-1];
-    const time=last?last.time:'';
-    const lastTxt=last?(last.me?'Você: ':last.nome.split(' ')[0]+': ')+last.txt:'Toque para abrir o chat';
-    return`<div class="chat-acao-item-big ${chatAcaoAtual===a.id?'on':''}" onclick="abrirChatMob('${a.id}')">
-      <div class="chat-acao-emoji" style="background:${a.bg}">${a.emoji}</div>
-      <div class="chat-acao-info">
-        <div class="chat-acao-nome">${a.titulo}</div>
-        <div class="chat-acao-last">${lastTxt}</div>
-      </div>
-      ${time?`<div class="chat-acao-time">${time}</div>`:''}
-      <i class="ti ti-chevron-right" style="font-size:18px;color:var(--text3);flex-shrink:0"></i>
-    </div>`;
-  }).join('');
-}
-
-function mostrarChatConversa(){
-  const lista=document.getElementById('mob-chat-list-screen');
-  const conv=document.getElementById('chat-conversa');
-  const bnav=document.getElementById('chat-bnav-desk');
-  if(isMob()){
-    lista.style.display='none';
-    conv.style.display='flex';
-    conv.style.flexDirection='column';
-    conv.style.flex='1';
-    conv.style.overflow='hidden';
-    // Adicionar bottomnav ao chat conversa no mobile
-    bnav.style.display='flex';
-  } else {
-    lista.style.display='none';
-    conv.style.display='flex';
-    conv.style.flex='1';
-    conv.style.overflow='hidden';
-  }
-}
-
-function voltarListaChats(){
-  if(!isMob())return;
-  const lista=document.getElementById('mob-chat-list-screen');
-  const conv=document.getElementById('chat-conversa');
-  const bnav=document.getElementById('chat-bnav-desk');
-  lista.style.display='flex';
-  conv.style.display='none';
-  bnav.style.display='none';
-  chatAcaoAtual=null;
-  renderChatList();
-}
-
-function abrirChatMob(id){
-  mostrarChatConversa();
-  abrirChat(id);
-}
-
-function abrirChat(id){
-  const a=acoes.find(x=>x.id===id);if(!a)return;
-  chatAcaoAtual=id;acaoAtualId=id;
-  // No desktop sempre mostra conversa
-  if(!isMob()){
-    document.getElementById('mob-chat-list-screen').style.display='none';
-    document.getElementById('chat-conversa').style.display='flex';
-    document.getElementById('chat-conversa').style.flex='1';
-    document.getElementById('chat-conversa').style.overflow='hidden';
-  }
-  document.getElementById('chat-title').textContent=a.titulo;
-  document.getElementById('chat-sub').textContent=(a.inscritos.length+1)+' participantes';
-  const msgs=document.getElementById('msgs');
-  msgs.innerHTML=a.msgs.length
-    ?a.msgs.map(m=>`
-      <div class="msg ${m.me?'me':'other'}">
-        ${!m.me?`<div class="mname">${m.nome}</div>`:''}
-        <div class="bubble">${m.txt}</div>
-        <div class="mtime">${m.time}</div>
-      </div>`).join('')
-    :`<div class="empty"><div class="ei">💬</div><div class="et">Nenhuma mensagem ainda</div><div class="es">Seja o primeiro a falar!</div></div>`;
-  setTimeout(()=>msgs.scrollTop=msgs.scrollHeight,80);
-  renderChatList();
-}
-
-function sendMsg(){
-  const input=document.getElementById('ctxt');const txt=input.value.trim();if(!txt)return;
-  if(!chatAcaoAtual){toast('Selecione uma conversa primeiro.');return;}
-  const a=acoes.find(x=>x.id===chatAcaoAtual);if(!a)return;
-  const now=new Date();const time=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
-  a.msgs.push({nome:perfil.nome,txt,time,me:true});
-  input.value='';abrirChat(chatAcaoAtual);
-}
-document.getElementById('ctxt').addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg();});
-
-// ── PAINEL ──
-function painelTab(el,tab){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));el.classList.add('on');painelTabAtual=tab;renderPainel();}
-
-function renderPainel(){
-  const c=document.getElementById('painel-content');
-  if(painelTabAtual==='ativas'){
-    const minhas=acoes.filter(a=>a.criador==='eu'&&!a.encerrada);
-    if(!minhas.length){c.innerHTML=`<div class="empty"><div class="ei">📋</div><div class="et">Nenhuma ação ativa</div><button class="btn btn-green" onclick="goTo('criar')" style="max-width:200px;margin:16px auto 0"><i class="ti ti-plus"></i> Criar ação</button></div>`;return;}
-    c.innerHTML=minhas.map(a=>{
-      const livres=a.vTotal-a.vPreench;const pct=Math.round(a.vPreench/a.vTotal*100);
-      return`<div class="acao-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
-          <div>
-            <div style="font-size:13px;color:var(--text2);margin-bottom:2px">Ação ativa</div>
-            <div style="font-size:18px;font-weight:800;color:var(--text)">${a.titulo}</div>
-            <div style="font-size:13px;color:var(--text2);margin-top:3px"><i class="ti ti-calendar"></i> ${a.data} · ${a.hora} · ${a.local}</div>
-          </div>
-          <span style="background:#E8F5E9;color:#1D5C2E;font-size:12px;padding:5px 13px;border-radius:10px;font-weight:700;white-space:nowrap">● Ativa</span>
+  
+  const isMobile = window.innerWidth <= 700;
+  const gridClass = isMobile ? '' : 'grid-3';
+  const categorias = {
+    meio: { nome: 'Meio Ambiente', emoji: '🌳', bg: '#E8F5E9', cor: '#1D5C2E' },
+    animais: { nome: 'Animais', emoji: '🐾', bg: '#FFF3E0', cor: '#E65100' },
+    social: { nome: 'Social', emoji: '🤝', bg: '#E3F2FD', cor: '#0D47A1' },
+    saude: { nome: 'Saúde', emoji: '💉', bg: '#FCE4EC', cor: '#C2185B' },
+    edu: { nome: 'Educação', emoji: '📚', bg: '#F3E5F5', cor: '#6A1B9A' },
+    outro: { nome: 'Outro', emoji: '✨', bg: '#F5F5F5', cor: '#666' }
+  };
+  
+  container.innerHTML = `<div class="lbl" style="margin-top:0">Próximas ações (${lista.length})</div><div class="${gridClass}">` + 
+    lista.map(a => {
+      const cat = categorias[a.categoria] || categorias.outro;
+      const livres = a.vagas_totais - a.vagas_preenchidas;
+      const pct = Math.round(a.vagas_preenchidas / a.vagas_totais * 100);
+      const inscrito = inscritas.has(a.id);
+      const dataFormatada = new Date(a.data).toLocaleDateString('pt-BR', { weekday: 'short', day: 'numeric', month: 'short' });
+      
+      return `<div class="card" onclick="abrirDetalhe('${a.id}')">
+        <div class="card-banner" style="background:${cat.bg}">${a.emoji || cat.emoji}</div>
+        <div class="card-body">
+          <span class="ctag" style="background:${cat.bg};color:${cat.cor}">${cat.nome}</span>
+          ${inscrito ? '<span class="ctag" style="background:#E8F5E9;color:#1D5C2E;margin-left:4px">✓ Inscrito</span>' : ''}
+          <div class="card-title">${a.titulo}</div>
+          <div class="card-meta"><span><i class="ti ti-calendar"></i>${dataFormatada}</span><span><i class="ti ti-clock"></i>${a.horario}</span><span><i class="ti ti-map-pin"></i>${a.local.substring(0, 20)}</span></div>
+          <div class="vbar-wrap"><span>${a.vagas_preenchidas}/${a.vagas_totais}</span><div class="vbar"><div class="vfill" style="width:${pct}%"></div></div><span class="vavail">${livres <= 0 ? '❌ Esgotado' : livres + ' livres'}</span></div>
         </div>
-        <div class="vcount">
-          <div><div class="vnum">${a.vPreench}</div><div class="vlbl">de ${a.vTotal} inscritos</div></div>
-          <div class="vbar" style="height:9px;flex:1"><div class="vfill" style="width:${pct}%"></div></div>
-          <div style="color:var(--green);font-weight:700;font-size:14px">${livres} livres</div>
-        </div>
-        <div class="btn-row">
-          <button class="btn-sm" style="background:var(--gbg);color:var(--green);flex:1" onclick="openAvisoModal('${a.id}')"><i class="ti ti-send"></i> Aviso</button>
-          <button class="btn-sm" style="background:var(--bg2);color:var(--text);flex:1" onclick="irChatPainel('${a.id}')"><i class="ti ti-message-circle"></i> Chat</button>
-          <button class="btn-sm" style="background:#EEF7EE;color:var(--green);flex:1" onclick="openEditarAcao('${a.id}')"><i class="ti ti-edit"></i> Editar</button>
-          <button class="btn-sm" style="background:#FFEBEE;color:#c62828;flex:1" onclick="confirmarEncerrar('${a.id}')"><i class="ti ti-lock"></i> Encerrar</button>
-        </div>
-        <div class="lbl" style="margin-top:14px">Inscritos (${a.inscritos.length})</div>
-        ${a.inscritos.length===0?'<div style="font-size:13px;color:var(--text3);padding:8px 0">Nenhum inscrito ainda.</div>':
-          a.inscritos.slice(0,6).map(i=>`
-          <div class="irow-p">
-            <div class="iava" style="background:${i.bg};color:${i.cor}">${i.ini}</div>
-            <div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--text)">${i.nome}</div><div style="font-size:12px;color:var(--text2)">${i.sub}</div></div>
-            <i class="ti ti-check" style="font-size:18px;color:var(--green)"></i>
-          </div>`).join('')+
-          (a.inscritos.length>6?`<div style="text-align:center;padding:10px;font-size:13px;color:var(--text3)">+ ${a.inscritos.length-6} inscritos</div>`:'')}
       </div>`;
-    }).join('');
-  } else if(painelTabAtual==='encerradas'){
-    const enc=acoes.filter(a=>a.criador==='eu'&&a.encerrada);
-    if(!enc.length){c.innerHTML=`<div class="empty"><div class="ei">🔒</div><div class="et">Nenhuma ação encerrada</div></div>`;return;}
-    c.innerHTML=enc.map(a=>`
-      <div class="acao-card" style="opacity:.75">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start">
-          <div><div style="font-size:17px;font-weight:800;color:var(--text)">${a.titulo}</div>
-          <div style="font-size:13px;color:var(--text2);margin-top:3px">${a.data} · ${a.inscritos.length} participaram</div></div>
-          <span style="background:#FFEBEE;color:#c62828;font-size:12px;padding:5px 13px;border-radius:10px;font-weight:700">Encerrada</span>
-        </div>
-        <button class="btn btn-gray" onclick="reativarAcao('${a.id}')"><i class="ti ti-refresh"></i> Reativar ação</button>
-      </div>`).join('');
+    }).join('') + '</div>';
+}
+
+function abrirDetalhe(id) {
+  goTo('detail', id);
+}
+
+function carregarDetalhe(id) {
+  const a = acoes.find(x => x.id === id);
+  if (!a) return;
+  
+  const categorias = {
+    meio: { nome: 'Meio Ambiente', emoji: '🌳', bg: '#E8F5E9' },
+    animais: { nome: 'Animais', emoji: '🐾', bg: '#FFF3E0' },
+    social: { nome: 'Social', emoji: '🤝', bg: '#E3F2FD' },
+    saude: { nome: 'Saúde', emoji: '💉', bg: '#FCE4EC' },
+    edu: { nome: 'Educação', emoji: '📚', bg: '#F3E5F5' },
+    outro: { nome: 'Outro', emoji: '✨', bg: '#F5F5F5' }
+  };
+  const cat = categorias[a.categoria] || categorias.outro;
+  
+  document.getElementById('det-banner').textContent = a.emoji || cat.emoji;
+  document.getElementById('det-banner').style.background = cat.bg;
+  document.getElementById('det-tag').textContent = cat.nome;
+  document.getElementById('det-tag').style.background = cat.bg;
+  document.getElementById('det-title').textContent = a.titulo;
+  // Mostrar nome do organizador real
+  if (a.organizador_id === usuarioLogado?.id) {
+    document.getElementById('det-org-nome').textContent = usuarioLogado.nome + ' (você)';
+    document.getElementById('det-org2').textContent = usuarioLogado.nome;
   } else {
-    const minhas=[...inscritas].map(id=>acoes.find(a=>a.id===id)).filter(Boolean);
-    if(!minhas.length){c.innerHTML=`<div class="empty"><div class="ei">📅</div><div class="et">Nenhuma inscrição</div><div class="es">Explore as ações e participe!</div><button class="btn btn-green" onclick="goTo('feed')" style="max-width:200px;margin:16px auto 0"><i class="ti ti-search"></i> Ver ações</button></div>`;return;}
-    const isMobile=window.innerWidth<=700;
-    c.innerHTML=`<div class="lbl">Suas inscrições (${minhas.length})</div>`+(isMobile?'':' <div class="grid-2">')+minhas.map(a=>`
-      <div class="card" onclick="goTo('detail','${a.id}')">
-        <div class="card-body" style="display:flex;align-items:center;gap:12px;padding:14px">
-          <div style="font-size:32px">${a.emoji}</div>
-          <div style="flex:1"><div class="card-title" style="margin-bottom:3px">${a.titulo}</div>
-          <div style="font-size:12px;color:var(--text2)">${a.data} · ${a.hora}</div></div>
-          <span style="background:#E8F5E9;color:#1D5C2E;font-size:11px;font-weight:700;padding:3px 9px;border-radius:9px">✓</span>
-        </div></div>`).join('')+(isMobile?'':'</div>');
+    document.getElementById('det-org-nome').textContent = 'Carregando...';
+    document.getElementById('det-org2').textContent = 'Carregando...';
+    apiRequest(`usuarios?id=eq.${a.organizador_id}&select=nome`).then(res => {
+      const nomeOrg = res && res[0] ? res[0].nome : 'Organizador';
+      document.getElementById('det-org-nome').textContent = nomeOrg;
+      document.getElementById('det-org2').textContent = nomeOrg;
+    }).catch(() => {
+      document.getElementById('det-org-nome').textContent = 'Organizador';
+      document.getElementById('det-org2').textContent = 'Organizador';
+    });
+  }
+  document.getElementById('det-data').textContent = new Date(a.data).toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  document.getElementById('det-hora').textContent = a.horario;
+  document.getElementById('det-local').textContent = a.local;
+  const livres = a.vagas_totais - a.vagas_preenchidas;
+  document.getElementById('det-vagas').textContent = `${a.vagas_preenchidas} de ${a.vagas_totais} vagas preenchidas`;
+  document.getElementById('det-livres').textContent = `${livres} livres`;
+  document.getElementById('det-bar').style.width = Math.round(a.vagas_preenchidas / a.vagas_totais * 100) + '%';
+  document.getElementById('det-desc').textContent = a.descricao || 'Sem descrição';
+  document.getElementById('det-levar').textContent = a.o_que_levar || 'A combinar';
+  
+  const btn = document.getElementById('btn-inscrever');
+  if (inscritas.has(id)) {
+    btn.innerHTML = '<i class="ti ti-x"></i> Cancelar inscrição';
+    btn.className = 'btn btn-red';
+  } else {
+    btn.innerHTML = '<i class="ti ti-check"></i> Quero Participar';
+    btn.className = 'btn btn-green';
   }
 }
 
-function irChatPainel(id){goTo('chat',id);}
+async function inscrever() {
+  const a = acoes.find(x => x.id === acaoAtualId);
+  if (!a) return;
+  
+  if (inscritas.has(acaoAtualId)) {
+    try {
+      await apiRequest(`inscricoes?usuario_id=eq.${usuarioLogado.id}&acao_id=eq.${acaoAtualId}`, 'DELETE');
+      await apiRequest(`acoes?id=eq.${acaoAtualId}`, 'PATCH', { vagas_preenchidas: a.vagas_preenchidas - 1 });
+      
+      inscritas.delete(acaoAtualId);
+      a.vagas_preenchidas--;
+      toast('Inscrição cancelada.');
+      carregarDetalhe(acaoAtualId);
+      carregarEstatisticas();
+      renderFeed();
+    } catch (err) {
+      toast('Erro ao cancelar: ' + err.message);
+    }
+  } else {
+    if (a.vagas_totais - a.vagas_preenchidas <= 0) {
+      toast('⚠️ Vagas esgotadas!');
+      return;
+    }
+    
+    try {
+if (window.inscrevendo) return;
+window.inscrevendo = true;
 
-function openAvisoModal(id){editandoAcaoId=id;document.getElementById('aviso-txt').value='';openModal('modal-aviso');}
+try {
 
-function enviarAviso(){
-  const txt=document.getElementById('aviso-txt').value.trim();
-  if(!txt){toast('⚠️ Digite uma mensagem!');return;}
-  const a=acoes.find(x=>x.id===editandoAcaoId);if(!a)return;
-  const now=new Date();const time=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
-  a.msgs.push({nome:'📢 '+perfil.nome+' (Organizador)',txt:'[AVISO] '+txt,time,me:false});
-  closeModal('modal-aviso');toast('✅ Aviso enviado para todos os inscritos!');
+  await apiRequest('inscricoes', 'POST', {
+    usuario_id: usuarioLogado.id,
+    acao_id: acaoAtualId
+  });
+
+} finally {
+  window.inscrevendo = false;
+}
+await apiRequest(`acoes?id=eq.${acaoAtualId}`, 'PATCH', { vagas_preenchidas: a.vagas_preenchidas + 1 });
+      
+      inscritas.add(acaoAtualId);
+      a.vagas_preenchidas++;
+      
+      document.getElementById('inscrito-sub').innerHTML = `Você está inscrito em<br><strong>${a.titulo}</strong><br>${new Date(a.data).toLocaleDateString()} às ${a.horario}.`;
+      document.getElementById('inscrito-local').innerHTML = `<i class="ti ti-map-pin" style="color:var(--green)"></i> ${a.local}`;
+      document.getElementById('inscrito-back').onclick = () => goTo('detail', acaoAtualId);
+      document.getElementById('inscrito-back2').onclick = () => goTo('detail', acaoAtualId);
+      document.getElementById('inscrito-chat-btn').onclick = () => { goTo('chat'); abrirChatAcao(acaoAtualId); };
+      
+      toast('✅ Inscrição realizada com sucesso!');
+      carregarEstatisticas();
+      renderFeed();
+      goTo('inscrito');
+    } catch (err) {
+      toast('Erro ao inscrever: ' + err.message);
+    }
+  }
 }
 
-function openEditarAcao(id){
-  editandoAcaoId=id;const a=acoes.find(x=>x.id===id);if(!a)return;
-  document.getElementById('ea-nome').value=a.titulo;document.getElementById('ea-data').value=a.dataISO||'';
-  document.getElementById('ea-hora').value=a.horaISO||'';document.getElementById('ea-local').value=a.local;
-  document.getElementById('ea-vagas').value=a.vTotal;document.getElementById('ea-desc').value=a.desc;
-  document.getElementById('ea-levar').value=a.levar;openModal('modal-edit-acao');
+function irChat() {
+  goTo('chat');
+  abrirChatAcao(acaoAtualId);
 }
 
-function salvarEdicaoAcao(){
-  const a=acoes.find(x=>x.id===editandoAcaoId);if(!a)return;
-  const nome=document.getElementById('ea-nome').value.trim();const local=document.getElementById('ea-local').value.trim();const vagas=parseInt(document.getElementById('ea-vagas').value)||0;
-  if(!nome||!local||!vagas){toast('⚠️ Preencha todos os campos!');return;}
-  a.titulo=nome;a.local=local;a.vTotal=vagas;
-  a.desc=document.getElementById('ea-desc').value.trim()||a.desc;
-  a.levar=document.getElementById('ea-levar').value.trim()||a.levar;
-  const dataISO=document.getElementById('ea-data').value;const horaISO=document.getElementById('ea-hora').value;
-  if(dataISO){a.dataISO=dataISO;const[y,m,d]=dataISO.split('-');const dt=new Date(y,m-1,d);a.data=DIAS[dt.getDay()]+', '+parseInt(d)+' '+MESES[parseInt(m)-1];a.dataLong=DIAS[dt.getDay()]+', '+parseInt(d)+' de '+MESES[parseInt(m)-1]+' de '+y;}
-  if(horaISO){a.horaISO=horaISO;a.hora=horaISO;a.horaLong=horaISO;}
-  closeModal('modal-edit-acao');toast('✅ Ação atualizada!');renderPainel();
+// ============================================
+// FUNÇÕES DO CHAT
+// ============================================
+
+async function renderChatList() {
+  try {
+    const inscricoes = await apiRequest(`inscricoes?select=acao_id&usuario_id=eq.${usuarioLogado.id}`);
+    const acoesIds = inscricoes.map(i => i.acao_id);
+    const minhasAcoes = await apiRequest(`acoes?select=*&id=in.(${acoesIds.join(',')})`);
+    
+    const sidebar = document.getElementById('chatListSidebar');
+    const mobContainer = document.getElementById('mobChatContainer');
+    
+    if (!minhasAcoes.length) {
+      const emptyMsg = '<div style="padding:20px;text-align:center;color:var(--text3)">Nenhum chat disponível<br>Inscreva-se em uma ação</div>';
+      if (sidebar) sidebar.innerHTML = emptyMsg;
+      if (mobContainer) mobContainer.innerHTML = emptyMsg;
+      return;
+    }
+    
+    const chatItems = minhasAcoes.map(a => `
+      <div class="chat-acao-item ${chatAtualId === a.id ? 'on' : ''}" onclick="abrirChatAcao('${a.id}')">
+        <span class="chat-acao-emoji">${a.emoji || '💬'}</span>
+        <div class="chat-acao-info">
+          <div class="chat-acao-nome">${a.titulo}</div>
+          <div class="chat-acao-last">Clique para conversar</div>
+        </div>
+      </div>
+    `).join('');
+    
+    if (sidebar) sidebar.innerHTML = chatItems;
+    if (mobContainer) mobContainer.innerHTML = chatItems;
+  } catch (err) {
+    console.error('Erro ao carregar chats:', err);
+  }
 }
 
-function confirmarEncerrar(id){
-  if(confirm('Tem certeza que deseja encerrar esta ação?'))encerrarAcaoPorId(id);
-}
-function encerrarAcaoModal(){encerrarAcaoPorId(editandoAcaoId);closeModal('modal-edit-acao');}
-function encerrarAcaoPorId(id){const a=acoes.find(x=>x.id===id);if(!a)return;a.encerrada=true;toast('🔒 Ação encerrada.');renderPainel();}
-function reativarAcao(id){const a=acoes.find(x=>x.id===id);if(!a)return;a.encerrada=false;toast('✅ Ação reativada!');renderPainel();}
+function iniciarRealtimeChat(acaoId) {
 
-// ── PERFIL ──
-function renderPerfil(){
-  document.getElementById('pf-nome').textContent=perfil.nome;
-  document.getElementById('pf-loc').innerHTML='<i class="ti ti-map-pin"></i> '+perfil.loc;
-  document.getElementById('pf-bio').textContent=perfil.bio;
-  const ini=perfil.nome.split(' ').map(x=>x[0]).join('').slice(0,2).toUpperCase();
-  document.getElementById('pf-inicial').textContent=ini;
-  document.getElementById('sb-ava').textContent=ini;
-  document.getElementById('sb-nome').textContent=perfil.nome;
-  document.getElementById('sb-loc').textContent=perfil.loc;
-  atualizarStats();renderHistorico();
-}
+  if (canalChat) {
+    supabaseRealtime.removeChannel(canalChat);
+  }
 
-function atualizarStats(){
-  const part=historico.length;const criadas=acoes.filter(a=>a.criador==='eu').length;const horas=historico.reduce((s,h)=>s+parseInt(h.h),0);
-  ['st-part','st-participadas'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=part;});
-  ['st-cri','st-criadas'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=criadas;});
-  ['st-h','st-horas'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=horas+'h';});
-  const prog=Math.min(part,10);
-  const pt=document.getElementById('prog-txt');if(pt)pt.textContent=prog+'/10';
-  const pb=document.getElementById('prog-bar');if(pb)pb.style.width=(prog/10*100)+'%';
-  if(prog>=10)document.getElementById('selo-10')?.classList.remove('off');
-  if(criadas>=3)document.getElementById('selo-emb')?.classList.remove('off');
+  canalChat = supabaseRealtime
+    .channel(`chat-${acaoId}`)
+    .on(
+      'postgres_changes',
+      {
+        event: 'INSERT',
+        schema: 'public',
+        table: 'mensagens',
+        filter: `acao_id=eq.${acaoId}`
+      },
+      async () => {
+
+        await abrirChatAcao(acaoId);
+
+      }
+    )
+    .subscribe();
 }
 
-function renderHistorico(){
-  const c=document.getElementById('hist-list');if(!c)return;
-  if(!historico.length){c.innerHTML=`<div class="empty"><div class="ei">📋</div><div class="et">Nenhuma participação ainda</div></div>`;return;}
-  c.innerHTML=historico.map(h=>`
+async function abrirChatAcao(id) {
+  const a = acoes.find(x => x.id === id);
+  if (!a) return;
+  chatAtualId = id;
+  
+  document.getElementById('chatTitulo').textContent = a.titulo;
+  document.getElementById('chatSubtitulo').textContent = 'Carregando participantes...';
+  
+  try {
+    const inscricoes = await apiRequest(`inscricoes?select=usuario_id&acao_id=eq.${id}`);
+    document.getElementById('chatSubtitulo').textContent = `${inscricoes.length + 1} participantes`;
+    
+    const mensagens = await apiRequest(`mensagens?select=*&acao_id=eq.${id}&order=created_at.asc`);
+
+    // Buscar nomes dos usuários que participaram do chat (sem duplicatas)
+    const idsUnicos = [...new Set(mensagens.map(m => m.usuario_id).filter(uid => uid !== usuarioLogado.id))];
+    const cacheNomes = {};
+    cacheNomes[usuarioLogado.id] = usuarioLogado.nome;
+    if (idsUnicos.length > 0) {
+      try {
+        const usuarios = await apiRequest(`usuarios?id=in.(${idsUnicos.join(',')})&select=id,nome`);
+        usuarios.forEach(u => { cacheNomes[u.id] = u.nome; });
+      } catch(e) {}
+    }
+
+    const msgsDiv = document.getElementById('msgsContainer');
+    msgsDiv.innerHTML = mensagens.length ? mensagens.map(m => {
+      const isMe = m.usuario_id === usuarioLogado.id;
+      const nomeRemetente = cacheNomes[m.usuario_id] || 'Participante';
+      return `
+      <div class="msg ${isMe ? 'me' : 'other'}">
+        ${!isMe ? `<div class="mname">${nomeRemetente}</div>` : ''}
+        <div class="bubble">${m.mensagem}</div>
+        <div class="mtime">${m.horario || new Date(m.created_at).toLocaleTimeString().slice(0,5)}</div>
+      </div>`;
+    }).join('') : '<div class="empty"><div class="ei">💬</div><div class="et">Nenhuma mensagem ainda</div><div class="es">Seja o primeiro a falar!</div></div>';
+    
+    setTimeout(() => msgsDiv.scrollTop = msgsDiv.scrollHeight, 100);
+  } catch (err) {
+    console.error('Erro ao carregar mensagens:', err);
+  }
+  
+  if (window.innerWidth <= 700) {
+    document.getElementById('mobChatList').style.display = 'none';
+    document.getElementById('chatConversa').style.display = 'flex';
+    document.getElementById('chatBottomNav').style.display = 'flex';
+  } else {
+    document.getElementById('mobChatList').style.display = 'none';
+    document.getElementById('chatConversa').style.display = 'flex';
+  }
+  
+  renderChatList();
+iniciarRealtimeChat(id);
+}
+
+function voltarListaChats() {
+if (canalChat) {
+    supabaseRealtime.removeChannel(canalChat);
+    canalChat = null;
+  }
+
+  if (window.innerWidth <= 700) {
+    document.getElementById('mobChatList').style.display = 'flex';
+    document.getElementById('chatConversa').style.display = 'none';
+    document.getElementById('chatBottomNav').style.display = 'none';
+    chatAtualId = null;
+    renderChatList();
+  }
+}
+
+async function enviarMensagem() {
+  const input = document.getElementById('msgInput');
+  const txt = input.value.trim();
+  if (!txt || !chatAtualId) return;
+  
+  const horario = new Date().toLocaleTimeString().slice(0,5);
+  
+  try {
+    await apiRequest('mensagens', 'POST', {
+      acao_id: chatAtualId,
+      usuario_id: usuarioLogado.id,
+      mensagem: txt,
+      horario: horario
+    });
+    input.value = '';
+  } catch (err) {
+    toast('Erro ao enviar mensagem: ' + err.message);
+  }
+}
+
+// ============================================
+// FUNÇÕES DO PAINEL
+// ============================================
+
+function painelTab(el, tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+  painelTabAtual = tab;
+  renderPainel();
+}
+
+async function renderPainel() {
+  const container = document.getElementById('painelContent');
+  
+  if (painelTabAtual === 'ativas') {
+    try {
+      const minhasAcoes = await apiRequest(`acoes?select=*&organizador_id=eq.${usuarioLogado.id}&encerrada=eq.false&order=data.asc`);
+      
+      if (!minhasAcoes.length) {
+        container.innerHTML = `<div class="empty"><div class="ei">📋</div><div class="et">Nenhuma ação ativa</div><button class="btn btn-green" onclick="goTo('criar')" style="max-width:200px;margin:16px auto 0"><i class="ti ti-plus"></i> Criar ação</button></div>`;
+        return;
+      }
+      
+      container.innerHTML = minhasAcoes.map(a => {
+        const livres = a.vagas_totais - a.vagas_preenchidas;
+        const pct = Math.round(a.vagas_preenchidas / a.vagas_totais * 100);
+        const dataFormatada = new Date(a.data).toLocaleDateString('pt-BR', { day: 'numeric', month: 'short' });
+        
+        return `<div class="acao-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+            <div>
+              <div style="font-size:13px;color:var(--text2);margin-bottom:2px">Ação ativa</div>
+              <div style="font-size:18px;font-weight:800;color:var(--text)">${a.titulo}</div>
+              <div style="font-size:13px;color:var(--text2);margin-top:3px"><i class="ti ti-calendar"></i> ${dataFormatada} · ${a.horario} · ${a.local.substring(0, 30)}</div>
+            </div>
+            <span style="background:#E8F5E9;color:#1D5C2E;font-size:12px;padding:5px 13px;border-radius:10px;font-weight:700;white-space:nowrap">● Ativa</span>
+          </div>
+          <div class="vcount">
+            <div><div class="vnum">${a.vagas_preenchidas}</div><div class="vlbl">de ${a.vagas_totais}</div></div>
+            <div class="vbar" style="height:9px;flex:1"><div class="vfill" style="width:${pct}%"></div></div>
+            <div style="color:var(--green);font-weight:700;font-size:14px">${livres} livres</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-sm" style="background:var(--gbg);color:var(--green);flex:1" onclick="openAvisoModal('${a.id}')"><i class="ti ti-send"></i> Aviso</button>
+            <button class="btn-sm" style="background:var(--bg2);color:var(--text);flex:1" onclick="abrirChatAcao('${a.id}');goTo('chat')"><i class="ti ti-message-circle"></i> Chat</button>
+            <button class="btn-sm" style="background:#EEF7EE;color:var(--green);flex:1" onclick="openEditarAcao('${a.id}')"><i class="ti ti-edit"></i> Editar</button>
+            <button class="btn-sm" style="background:#FFEBEE;color:#c62828;flex:1" onclick="confirmarEncerrar('${a.id}')"><i class="ti ti-lock"></i> Encerrar</button>
+          </div>
+          <div class="lbl" style="margin-top:14px">Inscritos (<span id="count-inscritos-${a.id}">...</span>)</div>
+          <div id="inscritos-${a.id}" style="margin-top:4px"><div style="font-size:13px;color:var(--text3);padding:8px 0">Carregando inscritos...</div></div>
+        </div>`;
+      }).join('');
+
+      // Buscar inscritos de cada ação com nomes reais
+      for (const a of minhasAcoes) {
+        carregarInscritosPainel(a.id);
+      }
+    } catch (err) {
+      container.innerHTML = `<div class="empty"><div class="ei">⚠️</div><div class="et">Erro ao carregar</div></div>`;
+    }
+  } else if (painelTabAtual === 'encerradas') {
+    try {
+      const encerradas = await apiRequest(`acoes?select=*&organizador_id=eq.${usuarioLogado.id}&encerrada=eq.true&order=data.asc`);
+      
+      if (!encerradas.length) {
+        container.innerHTML = `<div class="empty"><div class="ei">🔒</div><div class="et">Nenhuma ação encerrada</div></div>`;
+        return;
+      }
+      
+      container.innerHTML = encerradas.map(a => `
+        <div class="acao-card" style="opacity:.75">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <div><div style="font-size:17px;font-weight:800;color:var(--text)">${a.titulo}</div>
+            <div style="font-size:13px;color:var(--text2);margin-top:3px">${new Date(a.data).toLocaleDateString()} · ${a.horario}</div></div>
+            <span style="background:#FFEBEE;color:#c62828;font-size:12px;padding:5px 13px;border-radius:10px;font-weight:700">Encerrada</span>
+          </div>
+          <button class="btn btn-gray" onclick="reativarAcao('${a.id}')" style="margin-top:12px"><i class="ti ti-refresh"></i> Reativar ação</button>
+        </div>
+      `).join('');
+    } catch (err) {
+      container.innerHTML = `<div class="empty"><div class="ei">⚠️</div><div class="et">Erro ao carregar</div></div>`;
+    }
+  } else {
+    const minhas = [...inscritas].map(id => acoes.find(a => a.id === id)).filter(Boolean);
+    if (!minhas.length) {
+      container.innerHTML = `<div class="empty"><div class="ei">📅</div><div class="et">Nenhuma inscrição</div><div class="es">Explore as ações e participe!</div><button class="btn btn-green" onclick="goTo('feed')" style="max-width:200px;margin:16px auto 0"><i class="ti ti-search"></i> Ver ações</button></div>`;
+      return;
+    }
+    const isMobile = window.innerWidth <= 700;
+    container.innerHTML = `<div class="lbl">Suas inscrições (${minhas.length})</div>` + (isMobile ? '' : '<div class="grid-2">') + 
+      minhas.map(a => `<div class="card" onclick="goTo('detail','${a.id}')"><div class="card-body" style="display:flex;align-items:center;gap:12px;padding:14px"><div style="font-size:32px">${a.emoji || '🌱'}</div><div style="flex:1"><div class="card-title" style="margin-bottom:3px">${a.titulo}</div><div style="font-size:12px;color:var(--text2)">${new Date(a.data).toLocaleDateString()} · ${a.horario}</div></div><span style="background:#E8F5E9;color:#1D5C2E;font-size:11px;font-weight:700;padding:3px 9px;border-radius:9px">✓</span></div></div>`).join('') + (isMobile ? '' : '</div>');
+  }
+}
+
+async function carregarInscritosPainel(acaoId) {
+  try {
+    const inscricoes = await apiRequest(`inscricoes?select=usuario_id&acao_id=eq.${acaoId}`);
+    const countEl = document.getElementById(`count-inscritos-${acaoId}`);
+    const listEl = document.getElementById(`inscritos-${acaoId}`);
+    if (!listEl) return;
+
+    if (countEl) countEl.textContent = inscricoes.length;
+
+    if (!inscricoes.length) {
+      listEl.innerHTML = '<div style="font-size:13px;color:var(--text3);padding:8px 0">Nenhum inscrito ainda.</div>';
+      return;
+    }
+
+    const ids = inscricoes.map(i => i.usuario_id);
+    const usuarios = await apiRequest(`usuarios?id=in.(${ids.join(',')})&select=id,nome`);
+
+    const cores = ['#E8F5E9','#E3F2FD','#FFF3E0','#F3E5F5','#FCE4EC','#E8EAF6'];
+    const coresTexto = ['#1D5C2E','#0D47A1','#E65100','#6A1B9A','#C2185B','#283593'];
+
+    listEl.innerHTML = usuarios.map((u, i) => {
+      const ini = u.nome.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+      const bg = cores[i % cores.length];
+      const cor = coresTexto[i % coresTexto.length];
+      return `<div class="irow-p">
+        <div class="iava" style="background:${bg};color:${cor}">${ini}</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;color:var(--text)">${u.nome}</div>
+        </div>
+        <i class="ti ti-check" style="font-size:18px;color:var(--green)"></i>
+      </div>`;
+    }).join('') + (usuarios.length < inscricoes.length
+      ? `<div style="text-align:center;padding:8px;font-size:13px;color:var(--text3)">+ ${inscricoes.length - usuarios.length} inscritos</div>`
+      : '');
+  } catch(err) {
+    const listEl = document.getElementById(`inscritos-${acaoId}`);
+    if (listEl) listEl.innerHTML = '<div style="font-size:13px;color:var(--text3)">Erro ao carregar inscritos.</div>';
+  }
+}
+
+function openAvisoModal(id) { editandoAcaoId = id; document.getElementById('avisoMsg').value = ''; openModal('modalAviso'); }
+function enviarAviso() {
+  const txt = document.getElementById('avisoMsg').value.trim();
+  if (!txt) { toast('⚠️ Digite uma mensagem!'); return; }
+  const a = acoes.find(x => x.id === editandoAcaoId);
+  if (a) {
+    toast('✅ Aviso enviado para todos os inscritos!');
+  }
+  closeModal('modalAviso');
+}
+function openEditarAcao(id) { editandoAcaoId = id; const a = acoes.find(x => x.id === id); if (!a) return; document.getElementById('eaNome').value = a.titulo; document.getElementById('eaData').value = a.data || ''; document.getElementById('eaHora').value = a.horario || ''; document.getElementById('eaLocal').value = a.local; document.getElementById('eaVagas').value = a.vagas_totais; document.getElementById('eaDesc').value = a.descricao || ''; document.getElementById('eaLevar').value = a.o_que_levar || ''; openModal('modalEditAcao'); }
+async function salvarEdicaoAcao() {
+  const a = acoes.find(x => x.id === editandoAcaoId);
+  if (!a) return;
+  const nome = document.getElementById('eaNome').value.trim();
+  const local = document.getElementById('eaLocal').value.trim();
+  const vagas = parseInt(document.getElementById('eaVagas').value) || 0;
+  if (!nome || !local || !vagas) { toast('⚠️ Preencha todos os campos!'); return; }
+  
+  try {
+    await apiRequest(`acoes?id=eq.${editandoAcaoId}`, 'PATCH', {
+      titulo: nome,
+      local: local,
+      vagas_totais: vagas,
+      descricao: document.getElementById('eaDesc').value.trim(),
+      o_que_levar: document.getElementById('eaLevar').value.trim(),
+      data: document.getElementById('eaData').value,
+      horario: document.getElementById('eaHora').value
+    });
+    closeModal('modalEditAcao');
+    toast('✅ Ação atualizada!');
+    await carregarAcoes();
+    renderPainel();
+  } catch (err) {
+    toast('Erro: ' + err.message);
+  }
+}
+function confirmarEncerrar(id) { if (confirm('Tem certeza que deseja encerrar esta ação?')) encerrarAcaoPorId(id); }
+function encerrarAcaoModal() { encerrarAcaoPorId(editandoAcaoId); closeModal('modalEditAcao'); }
+async function encerrarAcaoPorId(id) {
+  try {
+    await apiRequest(`acoes?id=eq.${id}`, 'PATCH', { encerrada: true });
+    toast('🔒 Ação encerrada.');
+    await carregarAcoes();
+    renderPainel();
+  } catch (err) {
+    toast('Erro: ' + err.message);
+  }
+}
+async function reativarAcao(id) {
+  try {
+    await apiRequest(`acoes?id=eq.${id}`, 'PATCH', { encerrada: false });
+    toast('✅ Ação reativada!');
+    await carregarAcoes();
+    renderPainel();
+  } catch (err) {
+    toast('Erro: ' + err.message);
+  }
+}
+
+// ============================================
+// FUNÇÕES DO PERFIL
+// ============================================
+
+function renderPerfil() {
+  if (!usuarioLogado) return;
+  document.getElementById('pf-nome').textContent = usuarioLogado.nome;
+  document.getElementById('pf-loc').innerHTML = '<i class="ti ti-map-pin"></i> Porto Velho, RO';
+  document.getElementById('pf-bio').textContent = 'Voluntário ativo 🌱';
+  renderHistorico();
+}
+
+function renderHistorico() {
+  const container = document.getElementById('histList');
+  if (!container) return;
+  
+  const historicoExemplo = [
+    { emoji: '🗑️', bg: '#E8F5E9', titulo: 'Mutirão de Limpeza', data: '07 Jun 2026 · Meio Ambiente', h: '+2h', tagBg: '#E8F5E9', tagCor: '#1D5C2E' },
+    { emoji: '🐾', bg: '#FFF3E0', titulo: 'Feira de Adoção', data: '25 Mai 2026 · Animais', h: '+3h', tagBg: '#FFF3E0', tagCor: '#E65100' }
+  ];
+  
+  container.innerHTML = historicoExemplo.map(h => `
     <div class="hist-item">
       <div class="hicon" style="background:${h.bg}">${h.emoji}</div>
       <div style="flex:1"><div class="htitle">${h.titulo}</div><div class="hdate">${h.data}</div></div>
       <span class="htag" style="background:${h.tagBg};color:${h.tagCor}">${h.h}</span>
-    </div>`).join('');
+    </div>
+  `).join('');
 }
 
-function openEditPerfil(){
-  document.getElementById('ep-nome').value=perfil.nome;document.getElementById('ep-loc').value=perfil.loc;document.getElementById('ep-bio').value=perfil.bio;
-  openModal('modal-edit-perfil');
-}
-function salvarPerfil(){
-  const nome=document.getElementById('ep-nome').value.trim();if(!nome){toast('⚠️ Nome não pode ficar vazio!');return;}
-  perfil.nome=nome;perfil.loc=document.getElementById('ep-loc').value.trim()||perfil.loc;perfil.bio=document.getElementById('ep-bio').value.trim()||perfil.bio;
-  closeModal('modal-edit-perfil');renderPerfil();toast('✅ Perfil atualizado!');
+function openEditPerfil() {
+  document.getElementById('epNome').value = usuarioLogado?.nome || '';
+  document.getElementById('epLoc').value = 'Porto Velho, RO';
+  document.getElementById('epBio').value = 'Voluntário ativo 🌱';
+  openModal('modalEditPerfil');
 }
 
-// ── CRIAR AÇÃO ──
-function selCat(el){document.querySelectorAll('.cat-opt').forEach(o=>o.classList.remove('on'));el.classList.add('on');}
-
-function publicarAcao(){
-  const nome=document.getElementById('f-nome').value.trim();const local=document.getElementById('f-local').value.trim();
-  const vagas=parseInt(document.getElementById('f-vagas').value)||0;const dataV=document.getElementById('f-data').value;const horaV=document.getElementById('f-hora').value;
-  if(!nome||!local||!vagas||!dataV||!horaV){toast('⚠️ Preencha todos os campos obrigatórios!');return;}
-  const catEl=document.querySelector('.cat-opt.on');const catId=catEl?catEl.getAttribute('data-cat'):'meio';
-  const[y,m,d]=dataV.split('-');const dt=new Date(y,m-1,d);const newId='acao_'+Date.now();
-  acoes.unshift({id:newId,cat:catId,emoji:EMOJIS[catId],bg:BGS[catId],tag:TAGS[catId],tagBg:BGS[catId],tagCor:CORS[catId],
-    titulo:nome,criador:'eu',data:DIAS[dt.getDay()]+', '+parseInt(d)+' '+MESES[parseInt(m)-1],hora:horaV,dist:'0 km',
-    vPreench:0,vTotal:vagas,dataLong:DIAS[dt.getDay()]+', '+parseInt(d)+' de '+MESES[parseInt(m)-1]+' de '+y,
-    horaLong:horaV,dataISO:dataV,horaISO:horaV,local,
-    desc:document.getElementById('f-desc').value.trim()||'Ação socioambiental em Porto Velho.',
-    levar:document.getElementById('f-levar').value.trim()||'A combinar.',
-    encerrada:false,inscritos:[],msgs:[{nome:'Sistema',txt:'Ação criada! Bem-vindos ao chat 🌱',time:'agora',me:false}]
-  });
-  ['f-nome','f-local','f-vagas','f-data','f-hora','f-desc','f-levar'].forEach(id=>document.getElementById(id).value='');
-  atualizarStats();toast('🎉 Ação publicada com sucesso!');setTimeout(()=>goTo('feed'),700);
+async function salvarPerfil() {
+  const nome = document.getElementById('epNome').value.trim();
+  if (!nome) { toast('⚠️ Nome não pode ficar vazio!'); return; }
+  
+  try {
+    await apiRequest(`usuarios?id=eq.${usuarioLogado.id}`, 'PATCH', { nome: nome });
+    usuarioLogado.nome = nome;
+    localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+    
+    const iniciais = nome.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+    document.getElementById('sb-ava').innerHTML = iniciais;
+    document.getElementById('sb-nome').innerHTML = nome;
+    document.getElementById('pf-inicial').innerHTML = iniciais;
+    document.getElementById('pf-nome').innerHTML = nome;
+    
+    closeModal('modalEditPerfil');
+    toast('✅ Perfil atualizado!');
+  } catch (err) {
+    toast('Erro: ' + err.message);
+  }
 }
 
-// ── NOTIFICAÇÕES ──
-function openNotif(){
-  const c=document.getElementById('notif-list');
-  c.innerHTML=notificacoes.length===0
-    ?`<div class="empty"><div class="ei">🔔</div><div class="et">Sem notificações</div></div>`
-    :notificacoes.map((n,i)=>`
-      <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border)">
-        <div style="width:9px;height:9px;border-radius:50%;background:${n.lida?'transparent':'var(--green)'};flex-shrink:0;margin-top:5px"></div>
-        <div style="flex:1"><div style="font-size:14px;color:var(--text);line-height:1.4">${n.txt}</div><div style="font-size:11px;color:var(--text3);margin-top:3px">${n.tempo}</div></div>
-        <button onclick="deletarNotif(${i})" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:20px;line-height:1">×</button>
-      </div>`).join('');
-  notificacoes.forEach(n=>n.lida=true);
-  document.getElementById('notif-badge').style.display='none';
-  document.getElementById('notif-badge2').style.display='none';
-  openModal('modal-notif');
+// ============================================
+// FUNÇÕES DE CRIAÇÃO DE AÇÃO
+// ============================================
+
+function selCat(el) {
+  document.querySelectorAll('.cat-opt').forEach(o => o.classList.remove('on'));
+  el.classList.add('on');
 }
-function deletarNotif(i){notificacoes.splice(i,1);if(!notificacoes.length)closeModal('modal-notif');else openNotif();}
 
-// ── RESIZE: re-render feed para corrigir grid ──
-window.addEventListener('resize',()=>{if(document.getElementById('s-feed').classList.contains('active'))renderFeed();});
+async function publicarAcao() {
+  const nome = document.getElementById('fNome').value.trim();
+  const local = document.getElementById('fLocal').value.trim();
+  const vagas = parseInt(document.getElementById('fVagas').value) || 0;
+  const dataV = document.getElementById('fData').value;
+  const horaV = document.getElementById('fHora').value;
+  
+  if (!nome || !local || !vagas || !dataV || !horaV) {
+    toast('⚠️ Preencha todos os campos obrigatórios!');
+    return;
+  }
+  
+  const catEl = document.querySelector('.cat-opt.on');
+  const catId = catEl ? catEl.getAttribute('data-cat') : 'meio';
+  const emojis = { meio: '🌳', animais: '🐾', social: '🤝', saude: '💉', edu: '📚', outro: '✨' };
+  
+  try {
+    await apiRequest('acoes', 'POST', {
+      titulo: nome,
+      categoria: catId,
+      descricao: document.getElementById('fDesc').value.trim() || 'Ação socioambiental em Porto Velho.',
+      local: local,
+      data: dataV,
+      horario: horaV,
+      vagas_totais: vagas,
+      o_que_levar: document.getElementById('fLevar').value.trim() || 'A combinar.',
+      emoji: emojis[catId] || '🌱',
+      organizador_id: usuarioLogado.id,
+      encerrada: false,
+      vagas_preenchidas: 0
+    });
+    
+    document.getElementById('fNome').value = '';
+    document.getElementById('fLocal').value = '';
+    document.getElementById('fVagas').value = '';
+    document.getElementById('fData').value = '';
+    document.getElementById('fHora').value = '';
+    document.getElementById('fDesc').value = '';
+    document.getElementById('fLevar').value = '';
+    
+    toast('🎉 Ação publicada com sucesso!');
+    await carregarAcoes();
+    await carregarEstatisticas();
+    goTo('feed');
+  } catch (err) {
+    toast('Erro: ' + err.message);
+  }
+}
 
-// ── INIT ──
-renderFeed();
-renderPerfil();
-renderChatList();
-// Init chat screen state
-document.getElementById('chat-conversa').style.display='none';
-document.getElementById('chat-bnav-desk').style.display='none';
+function openNotif() { openModal('modalNotif'); }
+
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
+
+window.addEventListener('resize', () => {
+  if (document.getElementById('s-feed').classList.contains('active')) renderFeed();
+});
+
+verificarSessao();
 </script>
 </body>
 </html>
